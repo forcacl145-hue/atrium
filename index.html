@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #f5f2ee; font-family: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #1c1b19; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3, h4, p, ul, li, figure { margin: 0; padding: 0; }
+  ul { list-style: none; }
+  a { color: #1c1b19; text-decoration: none; }
+  a:hover { color: #d06712; }
+  button { font-family: inherit; cursor: pointer; }
+  @keyframes lbFade { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes lbZoom { from { opacity: 0; transform: scale(0.94) translateY(8px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+  image-slot { --slot-bg: #e7e0d7; }
+  @media (max-width: 1000px) {
+    [data-r="nav"] { display: none !important; }
+    [data-r="burger"] { display: flex !important; }
+    [data-r="headcontact"] { display: none !important; }
+    [data-r="split"] { flex-direction: column !important; align-items: stretch !important; min-height: 0 !important; }
+    [data-r="textcol"] { width: 100% !important; min-width: 0 !important; max-width: none !important; height: auto !important; }
+    [data-r="media"] { position: relative !important; width: 100% !important; height: 260px !important; margin-top: 24px !important; }
+    [data-r="grid6"] { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+    [data-r="grid4"] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+    [data-r="grid3"] { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; column-gap: 22px !important; }
+    [data-r="footrow"] { flex-wrap: wrap !important; gap: 30px !important; }
+    h1 { font-size: 34px !important; }
+  }
+  @media (max-width: 680px) {
+    [data-r="grid6"], [data-r="grid4"], [data-r="grid2"] { grid-template-columns: minmax(0, 1fr) !important; }
+    [data-r="grid3"] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; column-gap: 20px !important; }
+    [data-r="media"] { height: 210px !important; }
+    [data-r="heroactions"] { flex-wrap: wrap !important; gap: 12px !important; }
+    h1 { font-size: 27px !important; }
+    h2 { font-size: 23px !important; }
+  }
+</style>
+</helmet>
+
+<div style="width: 100%; margin: 0 auto; background: #f5f2ee; overflow: hidden;">
+
+  <header data-header="" style="position: sticky; top: 0; z-index: 55; height: 72px; padding: 0 max(40px, calc((100% - 1400px) / 2)); background: #1c1b19; border-bottom: 1px solid #eb9338; display: flex; align-items: center; justify-content: space-between; transition: height 0.32s cubic-bezier(0.22, 0.8, 0.25, 1), background-color 0.32s ease, backdrop-filter 0.32s ease;">
+    <div data-progress="" style="position: absolute; left: 0; bottom: -1px; height: 2px; width: 0%; background: linear-gradient(90deg, #f09a3e 0%, #d06712 100%);"></div>
+    <a href="#top" style="display: flex; flex-direction: column; gap: 3px;">
+      <span style="font-size: 20px; font-weight: 700; letter-spacing: 0.08em; line-height: 1; color: #f6f3ef;">АТРИУМ</span>
+      <span style="font-size: 9.5px; font-weight: 400; letter-spacing: 0.14em; color: #a29b93; line-height: 1;">жилой комплекс</span>
+    </a>
+    <nav data-r="nav" style="display: flex; align-items: center; gap: 30px;">
+      <a href="#about" style="font-size: 12.5px; font-weight: 400; color: #d9d3cb;">О проекте</a>
+      <a href="#plans" style="font-size: 12.5px; font-weight: 400; color: #d9d3cb;">Планировки</a>
+      <a href="#infra" style="font-size: 12.5px; font-weight: 400; color: #d9d3cb;">Инфраструктура</a>
+      <a href="#location" style="font-size: 12.5px; font-weight: 400; color: #d9d3cb;">Расположение</a>
+      <a href="#gallery" style="font-size: 12.5px; font-weight: 400; color: #d9d3cb;">Галерея</a>
+      <a href="#contacts" style="font-size: 12.5px; font-weight: 400; color: #d9d3cb;">Контакты</a>
+    </nav>
+    <div data-r="headcontact" style="display: flex; flex-direction: column; align-items: flex-end; gap: 5px;">
+      <a href="tel:+73830000000" style="font-size: 13.5px; font-weight: 700; letter-spacing: 0.01em; color: #f6f3ef;">{{ phone }}</a>
+      <button type="button" onClick="{{ goCta }}" style="background: none; border: 0; padding: 0; font-size: 11.5px; font-weight: 400; color: #e59a4a;" style-hover="color: #f6a94f;">Заказать звонок</button>
+    </div>
+    <button type="button" data-r="burger" onClick="{{ toggleNav }}" aria-label="Меню" style="display: none; width: 42px; height: 42px; flex-direction: column; align-items: center; justify-content: center; gap: 5px; background: none; border: 1px solid rgba(255, 255, 255, 0.24); border-radius: 3px; padding: 0;">
+      <span style="display: block; width: 18px; height: 1.5px; background: #f6f3ef;"></span>
+      <span style="display: block; width: 18px; height: 1.5px; background: #f6f3ef;"></span>
+      <span style="display: block; width: 18px; height: 1.5px; background: #f6f3ef;"></span>
+    </button>
+  </header>
+
+  <sc-if value="{{ navOpen }}" hint-placeholder-val="{{ false }}">
+    <nav style="position: sticky; top: 0; z-index: 60; background: #22201e; border-bottom: 1px solid #eb9338; padding: 14px max(20px, calc((100% - 1400px) / 2)) 18px; display: flex; flex-direction: column; gap: 2px;">
+      <a href="#about" onClick="{{ closeNav }}" style="padding: 11px 0; font-size: 13.5px; font-weight: 600; color: #e6e2dc; border-bottom: 1px solid rgba(255, 255, 255, 0.07);">О проекте</a>
+      <a href="#plans" onClick="{{ closeNav }}" style="padding: 11px 0; font-size: 13.5px; font-weight: 600; color: #e6e2dc; border-bottom: 1px solid rgba(255, 255, 255, 0.07);">Планировки</a>
+      <a href="#infra" onClick="{{ closeNav }}" style="padding: 11px 0; font-size: 13.5px; font-weight: 600; color: #e6e2dc; border-bottom: 1px solid rgba(255, 255, 255, 0.07);">Инфраструктура</a>
+      <a href="#location" onClick="{{ closeNav }}" style="padding: 11px 0; font-size: 13.5px; font-weight: 600; color: #e6e2dc; border-bottom: 1px solid rgba(255, 255, 255, 0.07);">Расположение</a>
+      <a href="#gallery" onClick="{{ closeNav }}" style="padding: 11px 0; font-size: 13.5px; font-weight: 600; color: #e6e2dc; border-bottom: 1px solid rgba(255, 255, 255, 0.07);">Галерея</a>
+      <a href="#contacts" onClick="{{ closeNav }}" style="padding: 11px 0; font-size: 13.5px; font-weight: 600; color: #e6e2dc;">Контакты</a>
+      <a href="tel:+73830000000" style="margin-top: 10px; font-size: 15px; font-weight: 700; color: #f6f3ef;">{{ phone }}</a>
+      <button type="button" onClick="{{ openFormFromNav }}" style="margin-top: 12px; height: 44px; background: linear-gradient(135deg, #f09a3e 0%, #d06712 100%); color: #ffffff; border: 0; border-radius: 3px; font-size: 13px; font-weight: 600;">Оставить заявку</button>
+    </nav>
+  </sc-if>
+
+  
+
+  <section id="top" data-r="split" style="position: relative; overflow: hidden; background: #1c1b19; padding: 34px max(40px, calc((100% - 1400px) / 2)) 40px; min-height: 470px; display: flex; align-items: flex-start; justify-content: flex-start;">
+    <div data-r="textcol" style="position: relative; z-index: 2; width: 42%; min-width: 420px; max-width: 500px; padding-top: 0px; display: flex; flex-direction: column; align-items: flex-start; height: 295px; gap: 0px">
+      <div style="display: inline-flex; align-items: center; border: 1px solid rgba(255, 255, 255, 0.28); border-radius: 999px; padding: 7px 15px; font-size: 11px; font-weight: 400; color: #F6F3EF; border-color: #EB913747">Новосибирск, ул. Военная, 23</div>
+      <h1 style="margin-top: 18px; font-size: 40px; font-weight: 700; line-height: 1.2; letter-spacing: -0.015em; color: #f6f3ef; width: 100%; height: auto;">Пространство, созданное для комфортной жизни</h1><p style="margin-top: 12px; font-size: 14px; font-weight: 600; line-height: 1.6; color: #b3aca4;">Современный жилой комплекс бизнес-класса<br>в&nbsp;центре Новосибирска</p>
+      
+      <div data-r="heroactions" style="margin-top: 26px; display: flex; align-items: center; gap: 26px;">
+        <button type="button" onClick="{{ goPlans }}" style="height: 44px; padding: 0 26px; background: linear-gradient(135deg, #f09a3e 0%, #d06712 100%); color: #ffffff; border: 0; border-radius: 3px; font-size: 13px; font-weight: 600;" style-hover="background: linear-gradient(135deg, #f5a84f 0%, #e07a24 100%);">Выбрать квартиру</button>
+        <sc-if value="{{ showVideoLink }}" hint-placeholder-val="{{ true }}">
+          <a href="#gallery" style="display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 24px; border: 1px solid #eb9338; border-radius: 3px; background: transparent; font-size: 12.5px; font-weight: 600; color: #eb9338; transition: all 0.25s ease;" style-hover="background: linear-gradient(135deg, #f09a3e 0%, #d06712 100%); border-color: transparent; color: #ffffff;">
+            <span>Смотреть фото о проекте</span>
+          </a>
+        </sc-if>
+      </div>
+    </div>
+    <div data-r="media" style="position: absolute; top: 0; right: 0; bottom: 0; width: 58%; overflow: hidden; z-index: 1;">
+      <image-slot id="atrium-hero" shape="rect" fit="cover" style="width: 100%; height: 100%" placeholder="Фото ЖК — горизонтальное, от 2000 px"><div style="position: absolute; inset: 0; pointer-events: none; backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); mask-image: linear-gradient(to right, #000 0%, rgba(0, 0, 0, 0.85) 18%, rgba(0, 0, 0, 0.35) 38%, transparent 56%); -webkit-mask-image: linear-gradient(to right, #000 0%, rgba(0, 0, 0, 0.85) 18%, rgba(0, 0, 0, 0.35) 38%, transparent 56%); width: 658px; height: 503px; left: -79px; top: -5px"></div></image-slot>
+      
+      <div style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to right, #1c1b19 0%, rgba(28, 27, 25, 0.94) 16%, rgba(28, 27, 25, 0.55) 34%, rgba(28, 27, 25, 0) 58%); width: 462px; height: 477px"></div>
+      <div style="position: absolute; left: 0; right: 0; top: 0; height: 83px; pointer-events: none; background: linear-gradient(to bottom, rgba(28, 27, 25, 0.9) 0%, rgba(28, 27, 25, 0) 100%); width: 722px"></div>
+      <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 90px; pointer-events: none; background: linear-gradient(to top, rgba(28, 27, 25, 0.9) 0%, rgba(28, 27, 25, 0) 100%);"></div>
+    </div>
+  </section><section style="position: relative; overflow: hidden; padding: 46px max(40px, calc((100% - 1400px) / 2)) 44px; background: linear-gradient(180deg, #efeae3 0%, #f7f4f0 46%, #f5f2ee 100%);">
+    <div style="position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(28, 27, 25, 0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(28, 27, 25, 0.045) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 70% 62% at 50% 46%, #000 0%, transparent 78%); -webkit-mask-image: radial-gradient(ellipse 70% 62% at 50% 46%, #000 0%, transparent 78%);"></div>
+    <div style="position: absolute; top: 0; left: 50%; width: 760px; height: 300px; transform: translateX(-50%); pointer-events: none; background: radial-gradient(ellipse at center, rgba(235, 147, 56, 0.16) 0%, rgba(235, 147, 56, 0) 72%);"></div>
+    <div style="position: absolute; left: 0; right: 0; top: 0; height: 1px; background: linear-gradient(90deg, rgba(235, 147, 56, 0) 0%, rgba(235, 147, 56, 0.55) 50%, rgba(235, 147, 56, 0) 100%);"></div>
+    <h2 data-words="" style="position: relative; z-index: 1; font-size: 30px; font-weight: 700; text-align: center; letter-spacing: -0.01em;">Почему выбирают нас</h2>
+    <p style="margin-top: 12px; font-size: 13px; font-weight: 600; line-height: 1.6; color: #6d675f; text-align: center;">Мы продумали всё, чтобы вы&nbsp;чувствовали<br>максимальный комфорт каждый день</p>
+    <div style="margin: 20px auto 0; width: 54px; height: 2px; background: linear-gradient(90deg, #f09a3e 0%, #d06712 100%);"></div>
+    <div data-r="grid6" style="position: relative; z-index: 1; margin-top: 30px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; align-items: stretch;">
+      <article style="display: flex; flex-direction: column; align-items: flex-start; padding: 20px 16px 22px; background: #ffffff; border: 1px solid #e7e0d7; border-radius: 4px; transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;" style-hover="transform: translateY(-4px); border-color: #eb9338; box-shadow: 0 14px 30px rgba(40, 30, 20, 0.09);">
+        <div style="width: 38px; height: 38px; border-radius: 10%; background: linear-gradient(135deg, rgba(240, 154, 62, 0.18) 0%, rgba(208, 103, 18, 0.12) 100%); display: flex; align-items: center; justify-content: center">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#d06712" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 14V4.6L8 2.1L13.4 4.6V14"></path><path d="M1.4 14H14.6"></path><path d="M6.2 14V9.4H9.8V14"></path></svg>
+        </div>
+        <h3 style="margin-top: 14px; font-size: 13.5px; font-weight: 700; line-height: 1.4;">Премиальная<br>архитектура</h3>
+        <p style="margin-top: 10px; font-size: 12px; font-weight: 400; line-height: 1.55; color: #6d675f;">Современный дизайн и&nbsp;качественные материалы</p>
+      </article>
+      <article style="display: flex; flex-direction: column; align-items: flex-start; padding: 20px 16px 22px; background: #ffffff; border: 1px solid #e7e0d7; border-radius: 4px; transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;" style-hover="transform: translateY(-4px); border-color: #eb9338; box-shadow: 0 14px 30px rgba(40, 30, 20, 0.09);">
+        <div style="width: 38px; height: 38px; border-radius: 10%; background: linear-gradient(135deg, rgba(240, 154, 62, 0.18) 0%, rgba(208, 103, 18, 0.12) 100%); display: flex; align-items: center; justify-content: center">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#d06712" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 1.9L13.2 3.7V8C13.2 11.1 10.9 13.2 8 14.1C5.1 13.2 2.8 11.1 2.8 8V3.7L8 1.9Z"></path><path d="M5.9 8.1L7.4 9.6L10.3 6.6"></path></svg>
+        </div>
+        <h3 style="margin-top: 14px; font-size: 13.5px; font-weight: 700; line-height: 1.4;">Закрытый двор<br>без&nbsp;машин</h3>
+        <p style="margin-top: 10px; font-size: 12px; font-weight: 400; line-height: 1.55; color: #6d675f;">Безопасное пространство<br>для вас и&nbsp;ваших детей</p>
+      </article>
+      <article style="display: flex; flex-direction: column; align-items: flex-start; padding: 20px 16px 22px; background: #ffffff; border: 1px solid #e7e0d7; border-radius: 4px; transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;" style-hover="transform: translateY(-4px); border-color: #eb9338; box-shadow: 0 14px 30px rgba(40, 30, 20, 0.09);">
+        <div style="width: 38px; height: 38px; border-radius: 10%; background: linear-gradient(135deg, rgba(240, 154, 62, 0.18) 0%, rgba(208, 103, 18, 0.12) 100%); display: flex; align-items: center; justify-content: center">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#d06712" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.4" y="2.4" width="11.2" height="11.2" rx="2"></rect><path d="M6.4 11.2V4.9H8.7C9.8 4.9 10.6 5.7 10.6 6.8C10.6 7.9 9.8 8.7 8.7 8.7H6.4"></path></svg>
+        </div>
+        <h3 style="margin-top: 14px; font-size: 13.5px; font-weight: 700; line-height: 1.4;">Подземный<br>паркинг</h3>
+        <p style="margin-top: 10px; font-size: 12px; font-weight: 400; line-height: 1.55; color: #6d675f;">Ваш автомобиль в&nbsp;безопасности и&nbsp;всегда под рукой</p>
+      </article>
+      <article style="display: flex; flex-direction: column; align-items: flex-start; padding: 20px 16px 22px; background: #ffffff; border: 1px solid #e7e0d7; border-radius: 4px; transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;" style-hover="transform: translateY(-4px); border-color: #eb9338; box-shadow: 0 14px 30px rgba(40, 30, 20, 0.09);">
+        <div style="width: 38px; height: 38px; border-radius: 10%; background: linear-gradient(135deg, rgba(240, 154, 62, 0.18) 0%, rgba(208, 103, 18, 0.12) 100%); display: flex; align-items: center; justify-content: center">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#d06712" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1.6 12.6L6.1 6.2L9 10.1L10.9 7.7L14.4 12.6H1.6Z"></path><circle cx="11.6" cy="4.2" r="1.5"></circle></svg>
+        </div>
+        <h3 style="margin-top: 14px; font-size: 13.5px; font-weight: 700; line-height: 1.4;">Панорамные<br>виды</h3>
+        <p style="margin-top: 10px; font-size: 12px; font-weight: 400; line-height: 1.55; color: #6d675f;">Впечатляющие виды на&nbsp;город и&nbsp;реку Обь</p>
+      </article>
+      <article style="display: flex; flex-direction: column; align-items: flex-start; padding: 20px 16px 22px; background: #ffffff; border: 1px solid #e7e0d7; border-radius: 4px; transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;" style-hover="transform: translateY(-4px); border-color: #eb9338; box-shadow: 0 14px 30px rgba(40, 30, 20, 0.09);">
+        <div style="width: 38px; height: 38px; border-radius: 10%; background: linear-gradient(135deg, rgba(240, 154, 62, 0.18) 0%, rgba(208, 103, 18, 0.12) 100%); display: flex; align-items: center; justify-content: center">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#d06712" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.2" y="2.2" width="5" height="5" rx="1"></rect><rect x="8.8" y="2.2" width="5" height="5" rx="1"></rect><rect x="2.2" y="8.8" width="5" height="5" rx="1"></rect><rect x="8.8" y="8.8" width="5" height="5" rx="1"></rect></svg>
+        </div>
+        <h3 style="margin-top: 14px; font-size: 13.5px; font-weight: 700; line-height: 1.4;">Инфраструктура<br>для&nbsp;жизни</h3>
+        <p style="margin-top: 10px; font-size: 12px; font-weight: 400; line-height: 1.55; color: #6d675f;">Всё необходимое на&nbsp;территории комплекса</p>
+      </article>
+      <article style="display: flex; flex-direction: column; align-items: flex-start; padding: 20px 16px 22px; background: #ffffff; border: 1px solid #e7e0d7; border-radius: 4px; transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;" style-hover="transform: translateY(-4px); border-color: #eb9338; box-shadow: 0 14px 30px rgba(40, 30, 20, 0.09);">
+        <div style="width: 38px; height: 38px; border-radius: 10%; background: linear-gradient(135deg, rgba(240, 154, 62, 0.18) 0%, rgba(208, 103, 18, 0.12) 100%); display: flex; align-items: center; justify-content: center">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#d06712" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.1" y="7" width="9.8" height="6.9" rx="1.6"></rect><path d="M5.6 7V5.3C5.6 4 6.7 2.9 8 2.9C9.3 2.9 10.4 4 10.4 5.3V7"></path><circle cx="8" cy="10.4" r="1"></circle></svg>
+        </div>
+        <h3 style="margin-top: 14px; font-size: 13.5px; font-weight: 700; line-height: 1.4;">Технологии<br>и&nbsp;безопасность</h3>
+        <p style="margin-top: 10px; font-size: 12px; font-weight: 400; line-height: 1.55; color: #6d675f;">Умный дом, видеонаблюдение 24/7, контроль доступа</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="about" data-r="split" style="position: relative; overflow: hidden; padding: 48px max(40px, calc((100% - 1400px) / 2)) 56px; min-height: 470px; background: #1c1b19; display: flex; align-items: center; justify-content: flex-start;">
+    <div data-r="media" style="position: absolute; right: 0; top: 0; bottom: 0; width: 56%; overflow: hidden; z-index: 1;">
+      <image-slot id="atrium-about" shape="rect" fit="cover" style="width: 100%; height: 100%;" placeholder="Фото двора"></image-slot>
+      <div style="position: absolute; inset: 0; pointer-events: none; backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); mask-image: linear-gradient(to right, #000 0%, rgba(0, 0, 0, 0.85) 18%, rgba(0, 0, 0, 0.35) 38%, transparent 56%); -webkit-mask-image: linear-gradient(to right, #000 0%, rgba(0, 0, 0, 0.85) 18%, rgba(0, 0, 0, 0.35) 38%, transparent 56%);"></div>
+      <div style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to right, #1c1b19 0%, rgba(28, 27, 25, 0.94) 16%, rgba(28, 27, 25, 0.55) 34%, rgba(28, 27, 25, 0) 58%); width: 273px; height: 518px"></div>
+      <div style="position: absolute; left: 0; right: 0; top: 0; height: 84px; pointer-events: none; background: linear-gradient(to bottom, rgba(28, 27, 25, 0.9) 0%, rgba(28, 27, 25, 0) 100%);"></div>
+      <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 90px; pointer-events: none; background: linear-gradient(to top, rgba(28, 27, 25, 0.9) 0%, rgba(28, 27, 25, 0) 100%);"></div>
+    </div>
+    <div data-r="textcol" style="position: relative; z-index: 2; width: 40%; min-width: 360px; max-width: 400px; display: flex; flex-direction: column; align-items: flex-start;">
+      <h2 style="font-size: 30px; font-weight: 700; letter-spacing: -0.01em; color: #f6f3ef;">О проекте</h2>
+      <p style="margin-top: 20px; font-size: 13.5px; font-weight: 400; line-height: 1.75; color: #b3aca4; max-width: 382px; text-wrap: pretty;"><span style="color: #eb9338; font-weight: 600;">ЖК «Атриум»</span> — современный <span style="color: #eb9338; font-weight: 600;">жилой комплекс</span> бизнес-класса, объединяющий несколько жилых домов <span style="color: #eb9338; font-weight: 600;">с</span>&nbsp;единой архитектурной концепцией, <span style="color: #eb9338; font-weight: 600;">закрытой территорией и&nbsp;собственной инфраструктурой</span>. Пространство, где каждая деталь продумана для комфортной городской жизни.</p>
+      <div data-r="grid3" style="margin-top: 26px; display: grid; grid-template-columns: repeat(3, 128px); row-gap: 22px; column-gap: 0;">
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <span data-count="" style="font-size: 18px; font-weight: 700; line-height: 1; color: #eb9338;">6</span>
+          <span style="font-size: 11.5px; font-weight: 400; color: #a29b93;">жилых корпусов</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <span data-count="" style="font-size: 18px; font-weight: 700; line-height: 1; color: #eb9338;">5 га</span>
+          <span style="font-size: 11.5px; font-weight: 400; color: #a29b93;">благоустроенная территория</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <span data-count="" style="font-size: 18px; font-weight: 700; line-height: 1; color: #eb9338;">2026</span>
+          <span style="font-size: 11.5px; font-weight: 400; color: #a29b93;">сдача</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <span data-count="" style="font-size: 16px; font-weight: 700; line-height: 1; color: #eb9338;">от 3,2 м</span>
+          <span style="font-size: 11.5px; font-weight: 400; color: #a29b93;">высота потолков</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <span data-count="" style="font-size: 16px; font-weight: 700; line-height: 1; color: #eb9338;">от 48 м²</span>
+          <span style="font-size: 11.5px; font-weight: 400; color: #a29b93;">площадь квартир</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <span style="font-size: 16px; font-weight: 700; line-height: 1; color: #eb9338;">отделка</span>
+          <span style="font-size: 11.5px; font-weight: 400; color: #a29b93;">White Box</span>
+        </div>
+      </div>
+      <button type="button" onClick="{{ goInfra }}" style="margin-top: 28px; height: 42px; padding: 0 22px; background: linear-gradient(135deg, #f09a3e 0%, #d06712 100%); color: #ffffff; border: 0; border-radius: 3px; font-size: 12.5px; font-weight: 600;" style-hover="background: linear-gradient(135deg, #f5a84f 0%, #e07a24 100%);">Подробнее о проекте</button>
+    </div>
+  </section>
+
+  <section id="plans" style="position: relative; overflow: hidden; padding: 44px max(40px, calc((100% - 1400px) / 2)); background: linear-gradient(180deg, #f7f4f0 0%, #fbfaf8 52%, #f7f4f0 100%);">
+    <div style="position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(28, 27, 25, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(28, 27, 25, 0.04) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 72% 64% at 50% 44%, #000 0%, transparent 78%); -webkit-mask-image: radial-gradient(ellipse 72% 64% at 50% 44%, #000 0%, transparent 78%);"></div>
+    <div style="position: absolute; top: 0; left: 50%; width: 760px; height: 300px; transform: translateX(-50%); pointer-events: none; background: radial-gradient(ellipse at center, rgba(235, 147, 56, 0.14) 0%, rgba(235, 147, 56, 0) 72%);"></div>
+    <h2 data-words="" style="position: relative; z-index: 1; font-size: 30px; font-weight: 700; text-align: center; letter-spacing: -0.01em;">Выберите свою квартиру</h2>
+    <p style="position: relative; z-index: 1; margin-top: 12px; font-size: 13px; font-weight: 600; line-height: 1.6; color: #6d675f; text-align: center;">Продуманные планировки для&nbsp;разных сценариев жизни.<br>Подберите идеальный вариант для&nbsp;себя.</p>
+    <div style="margin: 20px auto 0; width: 54px; height: 2px; background: linear-gradient(90deg, #f09a3e 0%, #d06712 100%);"></div>
+    <div data-r="grid4" style="position: relative; z-index: 1; margin-top: 28px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; align-items: start;">
+      <article style="border: 1px solid #e7e0d7; border-radius: 4px; background: #ffffff; display: flex; flex-direction: column; min-width: 0; overflow: hidden; transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;" style-hover="transform: translateY(-4px); border-color: #eb9338; box-shadow: 0 14px 30px rgba(40, 30, 20, 0.09);">
+        <img src="./plan-1.png" data-draw="" alt="Планировка 1-комнатной квартиры" onClick="{{ openPlan0 }}" style="display: block; width: 100%; height: 180px; object-fit: contain; background: #ffffff; cursor: zoom-in; transition: opacity 0.25s ease;" style-hover="opacity: 0.86;">
+        <div style="padding: 14px 15px 12px; display: flex; flex-direction: column;">
+          <h3 style="font-size: 13.5px; font-weight: 700;">1-комнатные</h3>
+          <span style="margin-top: 9px; font-size: 13px; font-weight: 600; color: #EF983C">от 48 м²</span>
+        </div>
+      </article>
+      <article style="border: 1px solid #e7e0d7; border-radius: 4px; background: #ffffff; display: flex; flex-direction: column; min-width: 0; overflow: hidden; transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;" style-hover="transform: translateY(-4px); border-color: #eb9338; box-shadow: 0 14px 30px rgba(40, 30, 20, 0.09);">
+        <img src="./plan-3.png" data-draw="" alt="Планировка 2-комнатной квартиры" onClick="{{ openPlan1 }}" style="display: block; width: 100%; height: 180px; object-fit: contain; background: #ffffff; cursor: zoom-in; transition: opacity 0.25s ease;" style-hover="opacity: 0.86;">
+        <div style="padding: 14px 15px 12px; display: flex; flex-direction: column;">
+          <h3 style="font-size: 13.5px; font-weight: 700;">2-комнатные</h3>
+          <span style="margin-top: 9px; font-size: 13px; font-weight: 600; color: #EC9338">от 68 м²</span>
+        </div>
+      </article>
+      <article style="border: 1px solid #e7e0d7; border-radius: 4px; background: #ffffff; display: flex; flex-direction: column; min-width: 0; overflow: hidden; transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;" style-hover="transform: translateY(-4px); border-color: #eb9338; box-shadow: 0 14px 30px rgba(40, 30, 20, 0.09);">
+        <img src="./plan-5.png" data-draw="" alt="Планировка 3-комнатной квартиры" onClick="{{ openPlan2 }}" style="display: block; width: 100%; height: 180px; object-fit: contain; background: #ffffff; cursor: zoom-in; transition: opacity 0.25s ease;" style-hover="opacity: 0.86;">
+        <div style="padding: 14px 15px 12px; display: flex; flex-direction: column;">
+          <h3 style="font-size: 13.5px; font-weight: 700;">3-комнатные</h3>
+          <span style="margin-top: 9px; font-size: 13px; font-weight: 600; color: #EC9338">от 92 м²</span>
+        </div>
+      </article>
+      <article style="border: 1px solid #e7e0d7; border-radius: 4px; background: #ffffff; display: flex; flex-direction: column; min-width: 0; overflow: hidden; transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;" style-hover="transform: translateY(-4px); border-color: #eb9338; box-shadow: 0 14px 30px rgba(40, 30, 20, 0.09);">
+        <img src="./plan-7.png" data-draw="" alt="Планировка 4-комнатной квартиры" onClick="{{ openPlan3 }}" style="display: block; width: 100%; height: 180px; object-fit: contain; background: #ffffff; cursor: zoom-in; transition: opacity 0.25s ease;" style-hover="opacity: 0.86;">
+        <div style="padding: 14px 15px 12px; display: flex; flex-direction: column;">
+          <h3 style="font-size: 13.5px; font-weight: 700;">4-комнатные</h3>
+          <span style="margin-top: 9px; font-size: 13px; font-weight: 600; color: #EC9338">от 120 м²</span>
+        </div>
+      </article>
+    </div>
+    <div style="margin-top: 26px; display: flex; justify-content: center;">
+      <button type="button" onClick="{{ openPlansAll }}" style="height: 42px; padding: 0 26px; background: transparent; color: #d06712; border: 1px solid #d06712; border-radius: 3px; font-size: 12.5px; font-weight: 600;" style-hover="background: linear-gradient(135deg, #f09a3e 0%, #d06712 100%); color: #ffffff; border-color: transparent;">Выбрать свою планировку</button>
+    </div>
+  </section>
+
+  <section id="infra" data-r="split" style="position: relative; overflow: hidden; padding: 48px max(40px, calc((100% - 1400px) / 2)); min-height: 400px; background: #22201e; display: flex; align-items: center; justify-content: flex-end;">
+    <div data-r="media" style="position: absolute; left: 0; top: 0; bottom: 0; width: 56%; overflow: hidden; z-index: 1;">
+      <image-slot id="atrium-infra" shape="rect" fit="cover" style="width: 100%; height: 100%;" placeholder="Фото инфраструктуры"></image-slot>
+      <div style="position: absolute; inset: 0; pointer-events: none; backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); mask-image: linear-gradient(to left, #000 0%, rgba(0, 0, 0, 0.85) 18%, rgba(0, 0, 0, 0.35) 38%, transparent 56%); -webkit-mask-image: linear-gradient(to left, #000 0%, rgba(0, 0, 0, 0.85) 18%, rgba(0, 0, 0, 0.35) 38%, transparent 56%);"></div>
+      <div style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to left, #22201e 0%, rgba(34, 32, 30, 0.94) 16%, rgba(34, 32, 30, 0.55) 34%, rgba(34, 32, 30, 0) 58%); width: 921px; height: 401px"></div>
+      <div style="position: absolute; left: 0; right: 0; top: 0; height: 80px; pointer-events: none; background: linear-gradient(to bottom, rgba(34, 32, 30, 0.9) 0%, rgba(34, 32, 30, 0) 100%);"></div>
+      <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 80px; pointer-events: none; background: linear-gradient(to top, rgba(34, 32, 30, 0.9) 0%, rgba(34, 32, 30, 0) 100%);"></div>
+    </div>
+    <div data-r="textcol" style="position: relative; z-index: 2; width: 42%; min-width: 400px; max-width: 440px; display: flex; flex-direction: column; align-items: flex-start;">
+      <h2 style="font-size: 30px; font-weight: 700; letter-spacing: -0.01em; color: #f6f3ef;">Инфраструктура</h2>
+      <p style="margin-top: 12px; font-size: 12.5px; font-weight: 600; line-height: 1.6; color: #a9a29a;">Всё необходимое для&nbsp;комфортной жизни<br>подобрано и&nbsp;рядом — в&nbsp;шаговой доступности.</p>
+      <ul data-r="grid2" style="margin-top: 22px; display: grid; grid-template-columns: repeat(2, 1fr); row-gap: 20px; column-gap: 30px; width: 100%;">
+        <li style="display: flex; align-items: flex-start; gap: 12px;">
+          <span style="flex: none; width: 28px; height: 28px; border-radius: 50%; border: 1px solid rgba(224, 122, 36, 0.55); display: flex; align-items: center; justify-content: center;">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#e07a24" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6.2V9.8M4.2 4.8V11.2M11.8 4.8V11.2M14 6.2V9.8M4.2 8H11.8"></path></svg>
+          </span>
+          <span style="font-size: 12px; font-weight: 400; line-height: 1.45; color: #e6e2dc;">Фитнес-зал только<br>для&nbsp;жителей</span>
+        </li>
+        <li style="display: flex; align-items: flex-start; gap: 12px;">
+          <span style="flex: none; width: 28px; height: 28px; border-radius: 50%; border: 1px solid rgba(224, 122, 36, 0.55); display: flex; align-items: center; justify-content: center;">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#e07a24" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6.8V13.2H13V6.8"></path><path d="M1.8 6.8L3.4 3.4H12.6L14.2 6.8H1.8Z"></path><path d="M6.6 13.2V9.6H9.4V13.2"></path></svg>
+          </span>
+          <span style="font-size: 12px; font-weight: 400; line-height: 1.45; color: #e6e2dc;">Коммерческие<br>помещения</span>
+        </li>
+        <li style="display: flex; align-items: flex-start; gap: 12px;">
+          <span style="flex: none; width: 28px; height: 28px; border-radius: 50%; border: 1px solid rgba(224, 122, 36, 0.55); display: flex; align-items: center; justify-content: center;">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#e07a24" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.2" y="8.6" width="5" height="5" rx="0.8"></rect><rect x="8.8" y="8.6" width="5" height="5" rx="0.8"></rect><path d="M5.4 8.6L8 3.2L10.6 8.6"></path></svg>
+          </span>
+          <span style="font-size: 12px; font-weight: 400; line-height: 1.45; color: #e6e2dc;">Детская игровая<br>комната</span>
+        </li>
+        <li style="display: flex; align-items: flex-start; gap: 12px;">
+          <span style="flex: none; width: 28px; height: 28px; border-radius: 50%; border: 1px solid rgba(224, 122, 36, 0.55); display: flex; align-items: center; justify-content: center;">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#e07a24" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 7.2V5.4C3.4 4.6 4 4 4.8 4H11.2C12 4 12.6 4.6 12.6 5.4V7.2"></path><rect x="2.2" y="7.2" width="11.6" height="4.4" rx="1.6"></rect><path d="M4.4 11.6V13.2M11.6 11.6V13.2"></path></svg>
+          </span>
+          <span style="font-size: 12px; font-weight: 400; line-height: 1.45; color: #e6e2dc;">Лобби с&nbsp;ресепшеном<br>и&nbsp;зоной отдыха</span>
+        </li>
+        <li style="display: flex; align-items: flex-start; gap: 12px;">
+          <span style="flex: none; width: 28px; height: 28px; border-radius: 50%; border: 1px solid rgba(224, 122, 36, 0.55); display: flex; align-items: center; justify-content: center;">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#e07a24" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3.6" width="8" height="5.6" rx="0.8"></rect><path d="M2.4 12.4L3.6 9.2H12.4L13.6 12.4H2.4Z"></path></svg>
+          </span>
+          <span style="font-size: 12px; font-weight: 400; line-height: 1.45; color: #e6e2dc;">Коворкинг<br>и&nbsp;переговорные</span>
+        </li>
+        <li style="display: flex; align-items: flex-start; gap: 12px;">
+          <span style="flex: none; width: 28px; height: 28px; border-radius: 50%; border: 1px solid rgba(224, 122, 36, 0.55); display: flex; align-items: center; justify-content: center;">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#e07a24" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 13.6V9.4"></path><path d="M8 2.4L4.4 7.6H11.6L8 2.4Z"></path><path d="M8 6.4L5.4 10.4H10.6L8 6.4Z"></path></svg>
+          </span>
+          <span style="font-size: 12px; font-weight: 400; line-height: 1.45; color: #e6e2dc;">Ландшафтный парк<br>во&nbsp;дворе</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="location" style="position: relative; overflow: hidden; padding: 40px max(40px, calc((100% - 1400px) / 2)) 34px; background: linear-gradient(180deg, #f7f4f0 0%, #fbfaf8 52%, #f7f4f0 100%);">
+    <div style="position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(28, 27, 25, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(28, 27, 25, 0.04) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 72% 64% at 50% 40%, #000 0%, transparent 78%); -webkit-mask-image: radial-gradient(ellipse 72% 64% at 50% 40%, #000 0%, transparent 78%);"></div>
+    <div style="position: absolute; top: 0; left: 50%; width: 760px; height: 300px; transform: translateX(-50%); pointer-events: none; background: radial-gradient(ellipse at center, rgba(235, 147, 56, 0.14) 0%, rgba(235, 147, 56, 0) 72%);"></div>
+    <h2 style="position: relative; z-index: 1; font-size: 30px; font-weight: 700; text-align: center; letter-spacing: -0.01em;">Идеальное расположение</h2>
+    <p style="position: relative; z-index: 1; margin-top: 10px; font-size: 13px; font-weight: 600; color: #6d675f; text-align: center;">Центр Новосибирска. Всё важное — рядом.</p>
+    <div style="margin: 18px auto 0; width: 54px; height: 2px; background: linear-gradient(90deg, #f09a3e 0%, #d06712 100%);"></div>
+    <div data-r="grid6" style="margin-top: 26px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 24px;">
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <div style="display: flex; align-items: baseline; gap: 6px;">
+          <span style="font-size: 22px; font-weight: 700; line-height: 1; color: #d06712;">5</span>
+          <span style="font-size: 12px; font-weight: 400; color: #55504a;">мин</span>
+        </div>
+        <span style="margin-top: 8px; font-size: 11.5px; font-weight: 400; color: #6d675f;">метро Октябрьская</span>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <div style="display: flex; align-items: baseline; gap: 6px;">
+          <span style="font-size: 22px; font-weight: 700; line-height: 1; color: #d06712;">7</span>
+          <span style="font-size: 12px; font-weight: 400; color: #55504a;">мин</span>
+        </div>
+        <span style="margin-top: 8px; font-size: 11.5px; font-weight: 400; color: #6d675f;">ТЦ Аура</span>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <div style="display: flex; align-items: baseline; gap: 6px;">
+          <span style="font-size: 22px; font-weight: 700; line-height: 1; color: #d06712;">10</span>
+          <span style="font-size: 12px; font-weight: 400; color: #55504a;">мин</span>
+        </div>
+        <span style="margin-top: 8px; font-size: 11.5px; font-weight: 400; color: #6d675f;">площадь Ленина</span>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <div style="display: flex; align-items: baseline; gap: 6px;">
+          <span style="font-size: 22px; font-weight: 700; line-height: 1; color: #d06712;">8</span>
+          <span style="font-size: 12px; font-weight: 400; color: #55504a;">мин</span>
+        </div>
+        <span style="margin-top: 8px; font-size: 11.5px; font-weight: 400; color: #6d675f;">набережная Оби</span>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <div style="display: flex; align-items: baseline; gap: 6px;">
+          <span style="font-size: 22px; font-weight: 700; line-height: 1; color: #d06712;">4</span>
+          <span style="font-size: 12px; font-weight: 400; color: #55504a;">мин</span>
+        </div>
+        <span style="margin-top: 8px; font-size: 11.5px; font-weight: 400; color: #6d675f;">детский сад</span>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <div style="display: flex; align-items: baseline; gap: 6px;">
+          <span style="font-size: 22px; font-weight: 700; line-height: 1; color: #d06712;">6</span>
+          <span style="font-size: 12px; font-weight: 400; color: #55504a;">мин</span>
+        </div>
+        <span style="margin-top: 8px; font-size: 11.5px; font-weight: 400; color: #6d675f;">школа</span>
+      </div>
+    </div>
+    <figure style="position: relative; z-index: 1; margin: 22px 0 0; width: 100%; height: 112px; background: #22201e; border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+      <svg width="30" height="36" viewBox="0 0 30 36" fill="none" aria-hidden="true">
+        <path d="M15 1C7.8 1 2 6.8 2 14C2 23 15 35 15 35C15 35 28 23 28 14C28 6.8 22.2 1 15 1Z" stroke="#e07a24" stroke-width="1.5"></path>
+        <circle cx="15" cy="14" r="4.5" stroke="#e07a24" stroke-width="1.5"></circle>
+      </svg>
+    </figure>
+  </section>
+
+  <section id="gallery" style="position: relative; overflow: hidden; padding: 44px max(40px, calc((100% - 1400px) / 2)) 42px; background: linear-gradient(180deg, #f7f4f0 0%, #fbfaf8 52%, #f7f4f0 100%);">
+    <div style="position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(28, 27, 25, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(28, 27, 25, 0.04) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 72% 64% at 50% 42%, #000 0%, transparent 78%); -webkit-mask-image: radial-gradient(ellipse 72% 64% at 50% 42%, #000 0%, transparent 78%);"></div>
+    <div style="position: absolute; top: 0; left: 50%; width: 760px; height: 300px; transform: translateX(-50%); pointer-events: none; background: radial-gradient(ellipse at center, rgba(235, 147, 56, 0.14) 0%, rgba(235, 147, 56, 0) 72%);"></div>
+    <h2 data-words="" style="position: relative; z-index: 1; font-size: 30px; font-weight: 700; text-align: center; letter-spacing: -0.01em;">Галерея пространства ЖК "Атриум"</h2>
+    <p style="position: relative; z-index: 1; margin-top: 10px; font-size: 13px; font-weight: 600; color: #6d675f; text-align: center;">Фотографии фасада, двора и&nbsp;общих пространств комплекса.</p>
+    <div style="margin: 18px auto 0; width: 54px; height: 2px; background: linear-gradient(90deg, #f09a3e 0%, #d06712 100%);"></div>
+    <div data-r="grid4" style="position: relative; z-index: 1; margin-top: 28px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; align-items: start;">
+      <article style="display: flex; flex-direction: column; align-items: flex-start; min-width: 0; overflow: hidden; padding: 10px 10px 14px; background: #ffffff; border: 1px solid #e7e0d7; border-radius: 4px; transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;" style-hover="transform: translateY(-4px); border-color: #eb9338; box-shadow: 0 14px 30px rgba(40, 30, 20, 0.09);">
+        <img src="./card-1.png" alt="Фасад ЖК Атриум" onClick="{{ openPhoto0 }}" style="display: block; width: 100%; height: 170px; object-fit: cover; cursor: zoom-in; transition: opacity 0.25s ease;" style-hover="opacity: 0.86;">
+        <h3 style="margin-top: 12px; font-size: 12.5px; font-weight: 700;">Фасад</h3>
+        <p style="margin-top: 6px; font-size: 12px; font-weight: 400; color: #6d675f;">Архитектура комплекса</p>
+      </article>
+      <article style="display: flex; flex-direction: column; align-items: flex-start; min-width: 0; overflow: hidden; padding: 10px 10px 14px; background: #ffffff; border: 1px solid #e7e0d7; border-radius: 4px; transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;" style-hover="transform: translateY(-4px); border-color: #eb9338; box-shadow: 0 14px 30px rgba(40, 30, 20, 0.09);">
+        <img src="./card-2.png" alt="Закрытый двор" onClick="{{ openPhoto1 }}" style="display: block; width: 100%; height: 170px; object-fit: cover; cursor: zoom-in; transition: opacity 0.25s ease;" style-hover="opacity: 0.86;">
+        <h3 style="margin-top: 12px; font-size: 12.5px; font-weight: 700;">Двор</h3>
+        <p style="margin-top: 6px; font-size: 12px; font-weight: 400; color: #6d675f;">Закрытая территория без&nbsp;машин</p>
+      </article>
+      <article style="display: flex; flex-direction: column; align-items: flex-start; min-width: 0; overflow: hidden; padding: 10px 10px 14px; background: #ffffff; border: 1px solid #e7e0d7; border-radius: 4px; transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;" style-hover="transform: translateY(-4px); border-color: #eb9338; box-shadow: 0 14px 30px rgba(40, 30, 20, 0.09);">
+        <img src="./card-3.png" alt="Лобби" onClick="{{ openPhoto2 }}" style="display: block; width: 100%; height: 170px; object-fit: cover; cursor: zoom-in; transition: opacity 0.25s ease;" style-hover="opacity: 0.86;">
+        <h3 style="margin-top: 12px; font-size: 12.5px; font-weight: 700;">Лобби</h3>
+        <p style="margin-top: 6px; font-size: 12px; font-weight: 400; color: #6d675f;">Ресепшен и&nbsp;зона отдыха</p>
+      </article>
+      <article style="display: flex; flex-direction: column; align-items: flex-start; min-width: 0; overflow: hidden; padding: 10px 10px 14px; background: #ffffff; border: 1px solid #e7e0d7; border-radius: 4px; transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;" style-hover="transform: translateY(-4px); border-color: #eb9338; box-shadow: 0 14px 30px rgba(40, 30, 20, 0.09);">
+        <img src="./card-4.png" alt="Панорама" onClick="{{ openPhoto3 }}" style="display: block; width: 100%; height: 170px; object-fit: cover; cursor: zoom-in; transition: opacity 0.25s ease;" style-hover="opacity: 0.86;">
+        <h3 style="margin-top: 12px; font-size: 12.5px; font-weight: 700;">Панорама</h3>
+        <p style="margin-top: 6px; font-size: 12px; font-weight: 400; color: #6d675f;">Виды на&nbsp;город и&nbsp;реку Обь</p>
+      </article>
+    </div>
+    <div style="margin-top: 24px; display: flex; justify-content: center;">
+      <button type="button" onClick="{{ openPhoto0 }}" style="height: 42px; padding: 0 26px; background: transparent; color: #d06712; border: 1px solid #d06712; border-radius: 3px; font-size: 12.5px; font-weight: 600;" style-hover="background: linear-gradient(135deg, #f09a3e 0%, #d06712 100%); color: #ffffff; border-color: transparent;">Смотреть все фотографии</button>
+    </div>
+  </section>
+
+  <section id="cta" data-r="split" style="position: relative; overflow: hidden; padding: 46px max(40px, calc((100% - 1400px) / 2)); min-height: 322px; background: #22201e; display: flex; align-items: center; justify-content: flex-start;">
+    <div data-r="media" style="position: absolute; right: 0; top: 0; bottom: 0; width: 56%; overflow: hidden; z-index: 1;">
+      <image-slot id="atrium-cta" shape="rect" fit="cover" style="width: 100%; height: 100%;" placeholder="Фото офиса продаж"></image-slot>
+      <div style="position: absolute; inset: 0; pointer-events: none; backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); mask-image: linear-gradient(to right, #000 0%, rgba(0, 0, 0, 0.85) 18%, rgba(0, 0, 0, 0.35) 38%, transparent 56%); -webkit-mask-image: linear-gradient(to right, #000 0%, rgba(0, 0, 0, 0.85) 18%, rgba(0, 0, 0, 0.35) 38%, transparent 56%);"></div>
+      <div style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to right, #22201e 0%, rgba(34, 32, 30, 0.94) 16%, rgba(34, 32, 30, 0.55) 34%, rgba(34, 32, 30, 0) 58%); width: 465px; height: 311px"></div>
+      <div style="position: absolute; left: 0; right: 0; top: 0; height: 70px; pointer-events: none; background: linear-gradient(to bottom, rgba(34, 32, 30, 0.9) 0%, rgba(34, 32, 30, 0) 100%);"></div>
+      <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 70px; pointer-events: none; background: linear-gradient(to top, rgba(34, 32, 30, 0.9) 0%, rgba(34, 32, 30, 0) 100%);"></div>
+    </div>
+    <div data-r="textcol" style="position: relative; z-index: 2; width: 44%; min-width: 400px; max-width: 470px; display: flex; flex-direction: column; align-items: flex-start; padding-top: 6px;">
+      <h2 style="font-size: 26px; font-weight: 700; line-height: 1.35; letter-spacing: -0.01em; color: #f6f3ef;">Остались вопросы?<br>Мы&nbsp;с&nbsp;радостью ответим на&nbsp;них</h2>
+      <p style="margin-top: 18px; font-size: 13px; font-weight: 600; line-height: 1.6; color: #b3aca4;">Оставьте заявку, и&nbsp;наш менеджер свяжется<br>с&nbsp;вами в&nbsp;ближайшее время.</p>
+      <button type="button" onClick="{{ goCta }}" style="margin-top: 24px; height: 44px; padding: 0 26px; background: linear-gradient(135deg, #f09a3e 0%, #d06712 100%); color: #ffffff; border: 0; border-radius: 3px; font-size: 13px; font-weight: 600;" style-hover="background: linear-gradient(135deg, #f5a84f 0%, #e07a24 100%);">Оставить заявку</button>
+    </div>
+  </section>
+
+  <footer id="contacts" style="background: #1c1b19; padding: 40px max(40px, calc((100% - 1400px) / 2)) 0;">
+    <div data-r="footrow" style="display: flex; align-items: flex-start; justify-content: space-between;">
+      <div style="width: 300px; display: flex; flex-direction: column; align-items: flex-start;">
+        <div style="display: flex; flex-direction: column; gap: 3px;">
+          <span style="font-size: 19px; font-weight: 700; letter-spacing: 0.08em; line-height: 1; color: #f6f3ef;">АТРИУМ</span>
+          <span style="font-size: 9.5px; font-weight: 400; letter-spacing: 0.14em; color: #a29b93; line-height: 1;">жилой комплекс</span>
+        </div>
+        <p style="margin-top: 20px; font-size: 11.5px; font-weight: 400; line-height: 1.7; color: #a9a29a;">Атриум — современный жилой комплекс бизнес-класса в&nbsp;центре Новосибирска. Пространство для жизни нового уровня.</p>
+        <div style="margin-top: 22px; display: flex; align-items: center; gap: 10px;">
+          <a href="#vk" style="width: 30px; height: 30px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.22); display: flex; align-items: center; justify-content: center; font-size: 9.5px; font-weight: 700; letter-spacing: 0.02em; color: #ded8d0;">VK</a>
+          <a href="#instagram" style="width: 30px; height: 30px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.22); display: flex; align-items: center; justify-content: center;">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="3.5" stroke="#cfc8c0"></rect><circle cx="8" cy="8" r="3" stroke="#cfc8c0"></circle><circle cx="11.6" cy="4.4" r="0.75" fill="#cfc8c0"></circle></svg>
+          </a>
+          <a href="#telegram" style="width: 30px; height: 30px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.22); display: flex; align-items: center; justify-content: center;">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 7.6L14 3L11.4 13.2L7.4 10.4L5.9 12.6L5.6 9.6L11.6 5.2L5.6 9.6L2 7.6Z" stroke="#cfc8c0" stroke-linejoin="round"></path></svg>
+          </a>
+        </div>
+      </div>
+      <nav style="width: 180px; display: flex; flex-direction: column; align-items: flex-start; gap: 12px;">
+        <h4 style="font-size: 12.5px; font-weight: 700; margin-bottom: 4px; color: #f6f3ef;">Навигация</h4>
+        <a href="#about" style="font-size: 11.5px; font-weight: 400; color: #b3aca4;">О проекте</a>
+        <a href="#plans" style="font-size: 11.5px; font-weight: 400; color: #b3aca4;">Планировки</a>
+        <a href="#infra" style="font-size: 11.5px; font-weight: 400; color: #b3aca4;">Инфраструктура</a>
+        <a href="#location" style="font-size: 11.5px; font-weight: 400; color: #b3aca4;">Расположение</a>
+        <a href="#gallery" style="font-size: 11.5px; font-weight: 400; color: #b3aca4;">Галерея</a>
+        <a href="#contacts" style="font-size: 11.5px; font-weight: 400; color: #b3aca4;">Контакты</a>
+      </nav>
+      <address style="width: 210px; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; font-style: normal;">
+        <h4 style="font-size: 12.5px; font-weight: 700; margin-bottom: 4px; color: #f6f3ef;">Контакты</h4>
+        <a href="tel:+73830000000" style="font-size: 11.5px; font-weight: 600; color: #e59a4a;">{{ phone }}</a>
+        <span style="font-size: 11.5px; font-weight: 400; color: #b3aca4;">г. Новосибирск,</span>
+        <span style="font-size: 11.5px; font-weight: 400; color: #b3aca4;">ул. Военная, 23</span>
+        <span style="font-size: 11.5px; font-weight: 400; color: #b3aca4;">Ежедневно с 9:00 до 21:00</span>
+      </address>
+      <sc-if value="{{ showFooterPromo }}" hint-placeholder-val="{{ true }}">
+        <img src="./logo-mark.png" alt="Логотип ЖК Атриум" width="827" height="549" style="display: block; width: 190px; height: auto; background: transparent;">
+      </sc-if>
+    </div>
+    <div style="margin-top: 28px; border-top: 1px solid rgba(255, 255, 255, 0.12); padding: 18px 0 20px; display: flex; align-items: center; justify-content: space-between;">
+      <span style="font-size: 11px; font-weight: 400; color: #8b847c;">© 2026 ЖК Атриум. Все права защищены.</span>
+      <a href="./privacy.html" target="_blank" rel="noopener noreferrer" style="font-size: 11px; font-weight: 400; color: #8b847c; transition: color 0.2s ease;" style-hover="color: #eb9338;">Политика конфиденциальности</a>
+    </div>
+  </footer>
+
+  <sc-if value="{{ lightboxOpen }}" hint-placeholder-val="{{ false }}">
+    <div data-lightbox="" onClick="{{ closeLightbox }}" style="position: fixed; inset: 0; z-index: 70; background: rgba(10, 9, 8, 0.94); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; animation: lbFade 0.3s ease both;">
+      <figure data-lb-figure="" onClick="{{ stopClick }}" style="margin: 0; display: flex; flex-direction: column; align-items: center; gap: 18px; animation: lbZoom 0.42s cubic-bezier(0.2, 0.8, 0.2, 1) both;">
+        <div style="display: flex; align-items: center; justify-content: center; width: 78vw; height: 72vh;">{{ lightboxFrame }}</div>
+        <figcaption style="display: flex; align-items: center; gap: 14px;">
+          <span style="font-size: 13px; font-weight: 600; color: #f6f3ef;">{{ lightboxCaption }}</span>
+          <span style="font-size: 12px; font-weight: 400; color: #eb9338;">{{ lightboxCounter }}</span>
+        </figcaption>
+      </figure>
+      <button type="button" onClick="{{ prevPhoto }}" aria-label="Предыдущее фото" style="position: absolute; left: 34px; top: 50%; transform: translateY(-50%); width: 54px; height: 54px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.28); background: rgba(255, 255, 255, 0.05); display: flex; align-items: center; justify-content: center; transition: all 0.25s ease;" style-hover="background: linear-gradient(135deg, #f09a3e 0%, #d06712 100%); border-color: transparent;">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#f6f3ef" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.2 3.6L5.6 10L12.2 16.4"></path></svg>
+      </button>
+      <button type="button" onClick="{{ nextPhoto }}" aria-label="Следующее фото" style="position: absolute; right: 34px; top: 50%; transform: translateY(-50%); width: 54px; height: 54px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.28); background: rgba(255, 255, 255, 0.05); display: flex; align-items: center; justify-content: center; transition: all 0.25s ease;" style-hover="background: linear-gradient(135deg, #f09a3e 0%, #d06712 100%); border-color: transparent;">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#f6f3ef" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.8 3.6L14.4 10L7.8 16.4"></path></svg>
+      </button>
+      <button type="button" onClick="{{ closeLightbox }}" aria-label="Закрыть" style="position: absolute; top: 28px; right: 34px; width: 42px; height: 42px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.24); background: none; display: flex; align-items: center; justify-content: center; transition: all 0.25s ease;" style-hover="border-color: #eb9338;">
+        <svg width="15" height="15" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 1L13 13M13 1L1 13" stroke="#f6f3ef" stroke-width="1.4" stroke-linecap="round"></path></svg>
+      </button>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ formOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position: fixed; inset: 0; z-index: 60; background: rgba(15, 15, 15, 0.5); display: flex; align-items: center; justify-content: center;" onClick="{{ closeForm }}">
+      <div onClick="{{ stopClick }}" style="width: 420px; background: #fbfaf8; padding: 32px 32px 28px; position: relative; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);">
+        <button type="button" onClick="{{ closeForm }}" style="position: absolute; top: 14px; right: 14px; width: 28px; height: 28px; background: none; border: 0; padding: 0; display: flex; align-items: center; justify-content: center;" style-hover="opacity: 0.6;">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 1L13 13M13 1L1 13" stroke="#1c1b19" stroke-width="1.4"></path></svg>
+        </button>
+        <sc-if value="{{ formNotSent }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ submitForm }}" style="display: flex; flex-direction: column; align-items: stretch;">
+            <h3 style="font-size: 20px; font-weight: 700; letter-spacing: -0.01em;">Оставить заявку</h3>
+            <p style="margin-top: 10px; font-size: 12.5px; font-weight: 600; line-height: 1.6; color: #6d675f;">Менеджер свяжется с&nbsp;вами в&nbsp;ближайшее время и&nbsp;ответит на&nbsp;все вопросы.</p>
+            <label style="margin-top: 22px; display: flex; flex-direction: column; gap: 7px; font-size: 11px; font-weight: 600; letter-spacing: 0.04em; color: #8b847c; text-transform: uppercase;">
+              <span>Имя</span>
+              <input type="text" name="name" required="" placeholder="Как к вам обращаться" style="height: 42px; padding: 0 13px; border: 1px solid #ded6cb; border-radius: 2px; font-family: inherit; font-size: 13px; font-weight: 400; color: #1c1b19; text-transform: none; letter-spacing: normal;">
+            </label>
+            <label style="margin-top: 16px; display: flex; flex-direction: column; gap: 7px; font-size: 11px; font-weight: 600; letter-spacing: 0.04em; color: #8b847c; text-transform: uppercase;">
+              <span>Телефон</span>
+              <input type="tel" name="phone" required="" placeholder="+7 (___) ___-__-__" style="height: 42px; padding: 0 13px; border: 1px solid #ded6cb; border-radius: 2px; font-family: inherit; font-size: 13px; font-weight: 400; color: #1c1b19; text-transform: none; letter-spacing: normal;">
+            </label>
+            <label style="margin-top: 16px; display: flex; flex-direction: column; gap: 7px; font-size: 11px; font-weight: 600; letter-spacing: 0.04em; color: #8b847c; text-transform: uppercase;">
+              <span>Комментарий</span>
+              <textarea name="comment" rows="3" placeholder="Интересует 2-комнатная квартира" style="padding: 11px 13px; border: 1px solid #ded6cb; border-radius: 2px; font-family: inherit; font-size: 13px; font-weight: 400; color: #171717; resize: none; text-transform: none; letter-spacing: normal;"></textarea>
+            </label>
+            <button type="submit" style="margin-top: 22px; height: 46px; background: linear-gradient(135deg, #f09a3e 0%, #d06712 100%); color: #ffffff; border: 0; border-radius: 3px; font-size: 13px; font-weight: 600;" style-hover="background: linear-gradient(135deg, #f5a84f 0%, #e07a24 100%);">Отправить заявку</button>
+            <span style="margin-top: 14px; font-size: 10.5px; font-weight: 400; line-height: 1.5; color: #8b847c;">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности.</span>
+          </form>
+        </sc-if>
+        <sc-if value="{{ formSent }}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; flex-direction: column; align-items: flex-start; padding: 12px 0 6px;">
+            <h3 style="font-size: 20px; font-weight: 700; letter-spacing: -0.01em;">Заявка отправлена</h3>
+            <p style="margin-top: 12px; font-size: 12.5px; font-weight: 600; line-height: 1.6; color: #6d675f;">Спасибо! Мы позвоним вам в течение рабочего дня.</p>
+            <button type="button" onClick="{{ closeForm }}" style="margin-top: 24px; height: 42px; padding: 0 24px; background: linear-gradient(135deg, #f09a3e 0%, #d06712 100%); color: #ffffff; border: 0; border-radius: 3px; font-size: 12.5px; font-weight: 600;" style-hover="background: linear-gradient(135deg, #f5a84f 0%, #e07a24 100%);">Закрыть</button>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;phone&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;+7 (999) 123-45-67&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Контент&quot;},&quot;privacyUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;./privacy.html&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Контент&quot;},&quot;showVideoLink&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Блоки&quot;},&quot;showFooterPromo&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Блоки&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    this.onClick = (e) => {
+      const a = e.target.closest('a[href^="#"]');
+      if (!a) return;
+      const id = a.getAttribute('href').slice(1);
+      const el = document.getElementById(id);
+      if (!el) return;
+      e.preventDefault();
+      window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 72, behavior: 'smooth' });
+    };
+    document.addEventListener('click', this.onClick);
+    this.onKeyDown = (e) => {
+      if (!(this.state && this.state.photoOpen)) return;
+      if (e.key === 'Escape') this.closeLightbox();
+      else if (e.key === 'ArrowRight') this.stepPhoto(1);
+      else if (e.key === 'ArrowLeft') this.stepPhoto(-1);
+    };
+    document.addEventListener('keydown', this.onKeyDown);
+    this.preloadPhotos();
+    this.setupScrollFx();
+  }
+  componentWillUnmount() {
+    document.removeEventListener('click', this.onClick);
+    if (this.onScrollFx) window.removeEventListener('scroll', this.onScrollFx);
+    if (this.onHeaderFx) window.removeEventListener('scroll', this.onHeaderFx);
+    [this._io, this._wordsIo, this._drawIo, this._numIo].forEach((o) => o && o.disconnect());
+  }
+  cardPhotos() {
+    return [
+      { src: './card-1.png', caption: 'Фасад — архитектура комплекса' },
+      { src: './card-2.png', caption: 'Двор — закрытая территория без машин' },
+      { src: './card-3.png', caption: 'Лобби — ресепшен и зона отдыха' },
+      { src: './card-4.png', caption: 'Панорама — виды на город и реку Обь' }
+    ];
+  }
+  planPhotos() {
+    return [
+      { src: './plan-1.png', caption: '1-комнатная — вариант 1' },
+      { src: './plan-2.png', caption: '1-комнатная — вариант 2' },
+      { src: './plan-3.png', caption: '2-комнатная — вариант 1' },
+      { src: './plan-4.jpg', caption: '2-комнатная — вариант 2' },
+      { src: './plan-5.png', caption: '3-комнатная — вариант 1' },
+      { src: './plan-6.jpg', caption: '3-комнатная — вариант 2' },
+      { src: './plan-7.png', caption: '4-комнатная — вариант 1' },
+      { src: './plan-8.jpg', caption: '4-комнатная — вариант 2' }
+    ];
+  }
+  photos() {
+    if (this.state && this.state.photoSet === 'plans') return this.planPhotos();
+    return this.cardPhotos().concat(this.newPhotos());
+  }
+  newPhotos() {
+    return [
+      { src: './gallery-1.png', caption: 'Фасад — архитектура комплекса' },
+      { src: './gallery-2.png', caption: 'Входная группа вечером' },
+      { src: './gallery-3.png', caption: 'Лобби с ресепшеном и зоной отдыха' },
+      { src: './gallery-4.png', caption: 'Квартира: White Box и вид во двор' }
+    ];
+  }
+  flipFrom(rect) {
+    if (!rect) return;
+    requestAnimationFrame(() => {
+      const fig = document.querySelector('[data-lb-figure]');
+      if (!fig) return;
+      const to = fig.getBoundingClientRect();
+      if (!to.width || !to.height) return;
+      const sx = rect.width / to.width;
+      const sy = rect.height / to.height;
+      const dx = rect.left + rect.width / 2 - (to.left + to.width / 2);
+      const dy = rect.top + rect.height / 2 - (to.top + to.height / 2);
+      fig.style.animation = 'none';
+      fig.style.transition = 'none';
+      fig.style.transformOrigin = 'center center';
+      fig.style.transform = 'translate(' + dx + 'px, ' + dy + 'px) scale(' + sx + ', ' + sy + ')';
+      fig.style.opacity = '0.35';
+      requestAnimationFrame(() => {
+        fig.style.transition = 'transform 0.52s cubic-bezier(0.22, 0.8, 0.25, 1), opacity 0.34s ease';
+        fig.style.transform = 'translate(0px, 0px) scale(1, 1)';
+        fig.style.opacity = '1';
+      });
+    });
+  }
+  rectOf(e) {
+    const t = e && (e.currentTarget || e.target);
+    return t && t.getBoundingClientRect ? t.getBoundingClientRect() : null;
+  }
+  openPlan(i, e) {
+    this.setState({ photoSet: 'plans', photoIndex: i, photoOpen: true, photoFading: false });
+    document.body.style.overflow = 'hidden';
+    this.flipFrom(this.rectOf(e));
+  }
+  openPhoto(i, e) {
+    this.flipFrom(this.rectOf(e));
+    this.setState({ photoSet: 'gallery', photoIndex: i, photoOpen: true, photoFading: false });
+    document.body.style.overflow = 'hidden';
+  }
+  closeLightbox() {
+    this.setState({ photoOpen: false });
+    document.body.style.overflow = '';
+  }
+  setupScrollFx() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const root = document.querySelector('x-dc') || document.body;
+    const ease = 'cubic-bezier(0.22, 0.8, 0.25, 1)';
+
+    const reveal = () => {
+      const groups = root.querySelectorAll('section, footer > div');
+      groups.forEach((group) => {
+        if (group.closest('[data-lightbox]')) return;
+        const items = group.querySelectorAll(':scope > h1, :scope > h2, :scope > p, :scope > figure, :scope > button, :scope > div > article, :scope > div > li, :scope > ul > li, :scope > div > div, :scope > div > h2, :scope > div > p, :scope > div > button, :scope > div > a');
+        let i = 0;
+        items.forEach((el) => {
+          if (el.dataset.rv || el.offsetParent === null) return;
+          if (getComputedStyle(el).position === 'absolute') return;
+          el.dataset.rv = '1';
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(26px)';
+          el.style.transition = 'opacity 0.7s ' + ease + ' ' + Math.min(i * 55, 330) + 'ms, transform 0.7s ' + ease + ' ' + Math.min(i * 55, 330) + 'ms';
+          this._io.observe(el);
+          i++;
+        });
+      });
+    };
+
+    this._io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+        this._io.unobserve(e.target);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+
+    const splitWords = () => {
+      root.querySelectorAll('h2[data-words]').forEach((h) => {
+        if (h.dataset.wordsDone) return;
+        h.dataset.wordsDone = '1';
+        const words = (h.textContent || '').split(' ').filter(Boolean);
+        h.textContent = '';
+        words.forEach((w, i) => {
+          const s = document.createElement('span');
+          s.textContent = w;
+          s.style.display = 'inline-block';
+          s.style.opacity = '0';
+          s.style.transform = 'translateY(18px)';
+          s.style.transition = 'opacity 0.55s ' + ease + ' ' + i * 40 + 'ms, transform 0.55s ' + ease + ' ' + i * 40 + 'ms';
+          h.appendChild(s);
+          if (i < words.length - 1) h.appendChild(document.createTextNode(' '));
+        });
+        this._wordsIo.observe(h);
+      });
+    };
+    this._wordsIo = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        e.target.querySelectorAll('span').forEach((s) => { s.style.opacity = '1'; s.style.transform = 'translateY(0)'; });
+        this._wordsIo.unobserve(e.target);
+      });
+    }, { threshold: 0.4 });
+
+    const drawMask = () => {
+      const hide = 'linear-gradient(to top, #000 0%, #000 50%, rgba(0, 0, 0, 0) 50%)';
+      root.querySelectorAll('[data-draw]').forEach((el) => {
+        if (el.dataset.drawDone) return;
+        el.dataset.drawDone = '1';
+        el.style.maskImage = hide;
+        el.style.webkitMaskImage = hide;
+        el.style.maskSize = '100% 200%';
+        el.style.webkitMaskSize = '100% 200%';
+        el.style.maskPosition = '0% 0%';
+        el.style.webkitMaskPosition = '0% 0%';
+        el.style.transition = 'mask-position 1.05s ' + ease + ', -webkit-mask-position 1.05s ' + ease + ', opacity 0.4s ease';
+        this._drawIo.observe(el);
+      });
+    };
+    this._drawIo = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        e.target.style.maskPosition = '0% 100%';
+        e.target.style.webkitMaskPosition = '0% 100%';
+        this._drawIo.unobserve(e.target);
+      });
+    }, { threshold: 0.25 });
+
+    const countUp = () => {
+      root.querySelectorAll('[data-count]').forEach((el) => {
+        if (el.dataset.countDone) return;
+        const raw = el.textContent || '';
+        const m = raw.match(/[\d]+(?:[.,]\d+)?/);
+        if (!m) return;
+        el.dataset.countDone = '1';
+        el.dataset.countRaw = raw;
+        el.dataset.countVal = m[0];
+        el.textContent = raw.replace(m[0], m[0].replace(/[\d]/g, '0'));
+        this._numIo.observe(el);
+      });
+    };
+    this._numIo = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        const el = e.target;
+        this._numIo.unobserve(el);
+        const raw = el.dataset.countRaw;
+        const src = el.dataset.countVal;
+        const dec = src.includes(',') ? 1 : 0;
+        const target = parseFloat(src.replace(',', '.'));
+        const dur = 1100;
+        const t0 = performance.now();
+        const tick = (t) => {
+          const k = Math.min(1, (t - t0) / dur);
+          const v = target * (1 - Math.pow(1 - k, 3));
+          const txt = dec ? v.toFixed(1).replace('.', ',') : String(Math.round(v));
+          el.textContent = raw.replace(src, txt);
+          if (k < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      });
+    }, { threshold: 0.6 });
+
+    const header = document.querySelector('[data-header]');
+    const bar = document.querySelector('[data-progress]');
+    this.onHeaderFx = () => {
+      const y = window.scrollY || document.documentElement.scrollTop;
+      if (header) {
+        const dense = y > 90;
+        header.style.height = dense ? '56px' : '72px';
+        header.style.background = dense ? 'rgba(28, 27, 25, 0.82)' : '#1c1b19';
+        header.style.backdropFilter = dense ? 'blur(14px)' : 'none';
+        header.style.webkitBackdropFilter = dense ? 'blur(14px)' : 'none';
+        header.style.boxShadow = dense ? '0 10px 30px rgba(0, 0, 0, 0.28)' : 'none';
+      }
+      if (bar) {
+        const h = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = (h > 0 ? Math.min(100, (y / h) * 100) : 0).toFixed(2) + '%';
+      }
+    };
+    window.addEventListener('scroll', this.onHeaderFx, { passive: true });
+    this.onHeaderFx();
+
+    setTimeout(() => { reveal(); splitWords(); drawMask(); countUp(); }, 60);
+
+    const shots = ['atrium-hero', 'atrium-about', 'atrium-infra', 'atrium-cta']
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+    shots.forEach((el) => { el.style.willChange = 'transform'; });
+
+    this.onScrollFx = () => {
+      if (this._raf) return;
+      this._raf = requestAnimationFrame(() => {
+        this._raf = null;
+        const vh = window.innerHeight;
+        shots.forEach((el) => {
+          const host = el.parentElement;
+          if (!host) return;
+          const r = host.getBoundingClientRect();
+          if (r.bottom < -200 || r.top > vh + 200) return;
+          const p = (r.top + r.height / 2 - vh / 2) / vh;
+          const narrow = window.innerWidth < 1000;
+          const sc = narrow ? 1.28 : 1.5;
+          const amp = narrow ? 60 : 150;
+          const room = r.height * (sc - 1) * 0.45;
+          el.style.transform = 'scale(' + sc + ') translate3d(0, ' + Math.max(-room, Math.min(room, p * -amp)).toFixed(2) + 'px, 0)';
+        });
+      });
+    };
+    window.addEventListener('scroll', this.onScrollFx, { passive: true });
+    this.onScrollFx();
+  }
+  preloadPhotos() {
+    if (this._preloaded) return;
+    this._preloaded = this.newPhotos().concat(this.planPhotos()).map((p) => { const im = new Image(); im.src = p.src; return im; });
+  }
+  stepPhoto(dir) {
+    const list = this.photos();
+    const n = list.length;
+    const cur = (this.state && this.state.photoIndex) || 0;
+    const next = (cur + dir + n) % n;
+    const im = new Image();
+    im.src = list[next].src;
+    const show = () => this.setState({ photoIndex: next, photoFading: false });
+    if (im.complete) { show(); return; }
+    this.setState({ photoFading: true });
+    im.decode ? im.decode().then(show, show) : (im.onload = show, im.onerror = show);
+  }
+  onKey = null;
+  openForm() { this.setState({ formOpen: true, formSent: false }); }
+  closeForm() { this.setState({ formOpen: false }); }
+  submitForm(e) {
+    if (e && e.preventDefault) e.preventDefault();
+    this.setState({ formSent: true });
+  }
+  scrollTo(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 72, behavior: 'smooth' });
+  }
+  renderVals() {
+    return {
+      goPlans: () => this.scrollTo('plans'),
+      goAbout: () => this.scrollTo('about'),
+      goInfra: () => this.scrollTo('infra'),
+      goProgress: () => this.scrollTo('gallery'),
+      goCta: () => this.openForm(),
+      formOpen: !!(this.state && this.state.formOpen),
+      formSent: !!(this.state && this.state.formSent),
+      formNotSent: !(this.state && this.state.formSent),
+      openForm: () => this.openForm(),
+      closeForm: () => this.closeForm(),
+      submitForm: (e) => this.submitForm(e),
+      stopClick: (e) => e.stopPropagation(),
+      navOpen: !!(this.state && this.state.navOpen),
+      toggleNav: () => this.setState((s) => ({ navOpen: !s.navOpen })),
+      closeNav: () => this.setState({ navOpen: false }),
+      openFormFromNav: () => { this.setState({ navOpen: false }); this.openForm(); },
+      privacyUrl: this.props.privacyUrl || './privacy.html',
+      lightboxOpen: !!(this.state && this.state.photoOpen),
+      lightboxFrame: React.createElement('img', {
+        src: this.photos()[(this.state && this.state.photoIndex) || 0].src,
+        alt: this.photos()[(this.state && this.state.photoIndex) || 0].caption,
+        style: {
+          display: 'block',
+          width: '78vw',
+          height: '72vh',
+          objectFit: 'contain',
+          opacity: (this.state && this.state.photoFading) ? 0 : 1,
+          transition: 'opacity 0.22s ease',
+          boxShadow: '0 30px 80px rgba(0, 0, 0, 0.55)'
+        }
+      }),
+      lightboxCaption: this.photos()[(this.state && this.state.photoIndex) || 0].caption,
+      lightboxCounter: (((this.state && this.state.photoIndex) || 0) + 1) + ' / ' + this.photos().length,
+      lightboxOpacity: (this.state && this.state.photoFading) ? 0 : 1,
+      openPlansAll: () => this.openPlan(0),
+      openPlan0: (e) => this.openPlan(0, e),
+      openPlan1: (e) => this.openPlan(2, e),
+      openPlan2: (e) => this.openPlan(4, e),
+      openPlan3: (e) => this.openPlan(6, e),
+      openPhoto0: (e) => this.openPhoto(0, e),
+      openPhoto1: (e) => this.openPhoto(1, e),
+      openPhoto2: (e) => this.openPhoto(2, e),
+      openPhoto3: (e) => this.openPhoto(3, e),
+      nextPhoto: (e) => { e.stopPropagation(); this.stepPhoto(1); },
+      prevPhoto: (e) => { e.stopPropagation(); this.stepPhoto(-1); },
+      closeLightbox: () => this.closeLightbox(),
+      phone: this.props.phone ?? '+7 (383) 000-00-00',
+      showVideoLink: this.props.showVideoLink ?? true,
+      showFooterPromo: this.props.showFooterPromo ?? true
+    };
+  }
+}
+</script>
+</body>
+</html>
