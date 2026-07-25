@@ -35,14 +35,14 @@
     [data-r="grid4"] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
     [data-r="grid3"] { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; column-gap: 22px !important; }
     [data-r="footrow"] { flex-wrap: wrap !important; gap: 30px !important; }
-    h1 { font-size: 34px !important; }
+    h1 { font-size: 40px !important; }
   }
   @media (max-width: 680px) {
     [data-r="grid6"], [data-r="grid4"], [data-r="grid2"] { grid-template-columns: minmax(0, 1fr) !important; }
     [data-r="grid3"] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; column-gap: 20px !important; }
     [data-r="media"] { height: 210px !important; }
     [data-r="heroactions"] { flex-wrap: wrap !important; gap: 12px !important; }
-    h1 { font-size: 27px !important; }
+    h1 { font-size: 30px !important; }
     h2 { font-size: 23px !important; }
   }
 </style>
@@ -90,25 +90,25 @@
 
   
 
-  <section id="top" data-r="split" style="position: relative; overflow: hidden; background: #1c1b19; padding: 34px max(40px, calc((100% - 1400px) / 2)) 40px; min-height: 470px; display: flex; align-items: flex-start; justify-content: flex-start;">
-    <div data-r="textcol" style="position: relative; z-index: 2; width: 42%; min-width: 420px; max-width: 500px; padding-top: 0px; display: flex; flex-direction: column; align-items: flex-start; height: 295px; gap: 0px">
-      <div style="display: inline-flex; align-items: center; border: 1px solid rgba(255, 255, 255, 0.28); border-radius: 999px; padding: 7px 15px; font-size: 11px; font-weight: 400; color: #F6F3EF; border-color: #EB913747">Новосибирск, ул. Военная, 23</div>
-      <h1 style="margin-top: 18px; font-size: 40px; font-weight: 700; line-height: 1.2; letter-spacing: -0.015em; color: #f6f3ef; width: 100%; height: auto;">Пространство, созданное для комфортной жизни</h1><p style="margin-top: 12px; font-size: 14px; font-weight: 600; line-height: 1.6; color: #b3aca4;">Современный жилой комплекс бизнес-класса<br>в&nbsp;центре Новосибирска</p>
+  <section id="top" data-r="split" style="position: relative; overflow: hidden; background: #1c1b19; padding: 52px max(40px, calc((100% - 1400px) / 2)) 62px; min-height: 640px; display: flex; align-items: center; justify-content: flex-start;">
+    <div data-r="textcol" style="position: relative; z-index: 2; width: 42%; min-width: 420px; max-width: 620px; padding-top: 0px; display: flex; flex-direction: column; align-items: flex-start; height: auto; gap: 0px">
+      <div style="display: inline-flex; align-items: center; border: 1px solid rgba(255, 255, 255, 0.28); border-radius: 999px; padding: 9px 19px; font-size: 13px; font-weight: 400; color: #F6F3EF; border-color: #EB913747">Новосибирск, ул. Военная, 23</div>
+      <h1 style="margin-top: 24px; font-size: 52px; font-weight: 700; line-height: 1.18; letter-spacing: -0.015em; color: #f6f3ef; width: 100%; height: auto;">Пространство, созданное для комфортной жизни</h1><p style="margin-top: 18px; font-size: 17px; font-weight: 600; line-height: 1.6; color: #b3aca4;">Современный жилой комплекс бизнес-класса<br>в&nbsp;центре Новосибирска</p>
       
-      <div data-r="heroactions" style="margin-top: 26px; display: flex; align-items: center; gap: 26px;">
-        <button type="button" onClick="{{ goPlans }}" style="height: 44px; padding: 0 26px; background: linear-gradient(135deg, #f09a3e 0%, #d06712 100%); color: #ffffff; border: 0; border-radius: 3px; font-size: 13px; font-weight: 600;" style-hover="background: linear-gradient(135deg, #f5a84f 0%, #e07a24 100%);">Выбрать квартиру</button>
+      <div data-r="heroactions" style="margin-top: 34px; display: flex; align-items: center; gap: 18px;">
+        <button type="button" onClick="{{ goPlans }}" style="height: 56px; padding: 0 34px; background: linear-gradient(135deg, #f09a3e 0%, #d06712 100%); color: #ffffff; border: 0; border-radius: 3px; font-size: 15.5px; font-weight: 600;" style-hover="background: linear-gradient(135deg, #f5a84f 0%, #e07a24 100%);">Выбрать квартиру</button>
         <sc-if value="{{ showVideoLink }}" hint-placeholder-val="{{ true }}">
-          <a href="#gallery" style="display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 24px; border: 1px solid #eb9338; border-radius: 3px; background: transparent; font-size: 12.5px; font-weight: 600; color: #eb9338; transition: all 0.25s ease;" style-hover="background: linear-gradient(135deg, #f09a3e 0%, #d06712 100%); border-color: transparent; color: #ffffff;">
+          <a href="#gallery" style="display: inline-flex; align-items: center; justify-content: center; height: 56px; padding: 0 30px; border: 1px solid #eb9338; border-radius: 3px; background: transparent; font-size: 15px; font-weight: 600; color: #eb9338; transition: all 0.25s ease;" style-hover="background: linear-gradient(135deg, #f09a3e 0%, #d06712 100%); border-color: transparent; color: #ffffff;">
             <span>Смотреть фото о проекте</span>
           </a>
         </sc-if>
       </div>
     </div>
     <div data-r="media" style="position: absolute; top: 0; right: 0; bottom: 0; width: 58%; overflow: hidden; z-index: 1;">
-      <image-slot id="atrium-hero" shape="rect" fit="cover" style="width: 100%; height: 100%" placeholder="Фото ЖК — горизонтальное, от 2000 px"><div style="position: absolute; inset: 0; pointer-events: none; backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); mask-image: linear-gradient(to right, #000 0%, rgba(0, 0, 0, 0.85) 18%, rgba(0, 0, 0, 0.35) 38%, transparent 56%); -webkit-mask-image: linear-gradient(to right, #000 0%, rgba(0, 0, 0, 0.85) 18%, rgba(0, 0, 0, 0.35) 38%, transparent 56%); width: 658px; height: 503px; left: -79px; top: -5px"></div></image-slot>
+      <image-slot id="atrium-hero" shape="rect" fit="cover" style="width: 100%; height: 100%" placeholder="Фото ЖК — горизонтальное, от 2000 px"><div style="position: absolute; inset: 0; pointer-events: none; backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); mask-image: linear-gradient(to right, #000 0%, rgba(0, 0, 0, 0.85) 18%, rgba(0, 0, 0, 0.35) 38%, transparent 56%); -webkit-mask-image: linear-gradient(to right, #000 0%, rgba(0, 0, 0, 0.85) 18%, rgba(0, 0, 0, 0.35) 38%, transparent 56%);"></div></image-slot>
       
-      <div style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to right, #1c1b19 0%, rgba(28, 27, 25, 0.94) 16%, rgba(28, 27, 25, 0.55) 34%, rgba(28, 27, 25, 0) 58%); width: 462px; height: 477px"></div>
-      <div style="position: absolute; left: 0; right: 0; top: 0; height: 83px; pointer-events: none; background: linear-gradient(to bottom, rgba(28, 27, 25, 0.9) 0%, rgba(28, 27, 25, 0) 100%); width: 722px"></div>
+      <div style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to right, #1c1b19 0%, rgba(28, 27, 25, 0.94) 16%, rgba(28, 27, 25, 0.55) 34%, rgba(28, 27, 25, 0) 58%); width: 264px; height: 656px"></div>
+      <div style="position: absolute; left: 0; right: 0; top: 0; height: 83px; pointer-events: none; background: linear-gradient(to bottom, rgba(28, 27, 25, 0.9) 0%, rgba(28, 27, 25, 0) 100%);"></div>
       <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 90px; pointer-events: none; background: linear-gradient(to top, rgba(28, 27, 25, 0.9) 0%, rgba(28, 27, 25, 0) 100%);"></div>
     </div>
   </section><section style="position: relative; overflow: hidden; padding: 46px max(40px, calc((100% - 1400px) / 2)) 44px; background: linear-gradient(180deg, #efeae3 0%, #f7f4f0 46%, #f5f2ee 100%);">
@@ -164,18 +164,18 @@
     </div>
   </section>
 
-  <section id="about" data-r="split" style="position: relative; overflow: hidden; padding: 48px max(40px, calc((100% - 1400px) / 2)) 56px; min-height: 470px; background: #1c1b19; display: flex; align-items: center; justify-content: flex-start;">
+  <section id="about" data-r="split" style="position: relative; overflow: hidden; padding: 64px max(40px, calc((100% - 1400px) / 2)) 72px; min-height: 620px; background: #1c1b19; display: flex; align-items: center; justify-content: flex-start;">
     <div data-r="media" style="position: absolute; right: 0; top: 0; bottom: 0; width: 56%; overflow: hidden; z-index: 1;">
       <image-slot id="atrium-about" shape="rect" fit="cover" style="width: 100%; height: 100%;" placeholder="Фото двора"></image-slot>
       <div style="position: absolute; inset: 0; pointer-events: none; backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); mask-image: linear-gradient(to right, #000 0%, rgba(0, 0, 0, 0.85) 18%, rgba(0, 0, 0, 0.35) 38%, transparent 56%); -webkit-mask-image: linear-gradient(to right, #000 0%, rgba(0, 0, 0, 0.85) 18%, rgba(0, 0, 0, 0.35) 38%, transparent 56%);"></div>
-      <div style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to right, #1c1b19 0%, rgba(28, 27, 25, 0.94) 16%, rgba(28, 27, 25, 0.55) 34%, rgba(28, 27, 25, 0) 58%); width: 273px; height: 518px"></div>
+      <div style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to right, #1c1b19 0%, rgba(28, 27, 25, 0.94) 16%, rgba(28, 27, 25, 0.55) 34%, rgba(28, 27, 25, 0) 58%); width: 558px; height: 633px"></div>
       <div style="position: absolute; left: 0; right: 0; top: 0; height: 84px; pointer-events: none; background: linear-gradient(to bottom, rgba(28, 27, 25, 0.9) 0%, rgba(28, 27, 25, 0) 100%);"></div>
       <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 90px; pointer-events: none; background: linear-gradient(to top, rgba(28, 27, 25, 0.9) 0%, rgba(28, 27, 25, 0) 100%);"></div>
     </div>
-    <div data-r="textcol" style="position: relative; z-index: 2; width: 40%; min-width: 360px; max-width: 400px; display: flex; flex-direction: column; align-items: flex-start;">
-      <h2 style="font-size: 30px; font-weight: 700; letter-spacing: -0.01em; color: #f6f3ef;">О проекте</h2>
-      <p style="margin-top: 20px; font-size: 13.5px; font-weight: 400; line-height: 1.75; color: #b3aca4; max-width: 382px; text-wrap: pretty;"><span style="color: #eb9338; font-weight: 600;">ЖК «Атриум»</span> — современный <span style="color: #eb9338; font-weight: 600;">жилой комплекс</span> бизнес-класса, объединяющий несколько жилых домов <span style="color: #eb9338; font-weight: 600;">с</span>&nbsp;единой архитектурной концепцией, <span style="color: #eb9338; font-weight: 600;">закрытой территорией и&nbsp;собственной инфраструктурой</span>. Пространство, где каждая деталь продумана для комфортной городской жизни.</p>
-      <div data-r="grid3" style="margin-top: 26px; display: grid; grid-template-columns: repeat(3, 128px); row-gap: 22px; column-gap: 0;">
+    <div data-r="textcol" style="position: relative; z-index: 2; width: 40%; min-width: 360px; max-width: 500px; display: flex; flex-direction: column; align-items: flex-start;">
+      <h2 style="font-size: 38px; font-weight: 700; letter-spacing: -0.01em; color: #f6f3ef;">О проекте</h2>
+      <p style="margin-top: 24px; font-size: 16px; font-weight: 400; line-height: 1.75; color: #b3aca4; max-width: 470px; text-wrap: pretty;"><span style="color: #eb9338; font-weight: 600;">ЖК «Атриум»</span> — современный <span style="color: #eb9338; font-weight: 600;">жилой комплекс</span> бизнес-класса, объединяющий несколько жилых домов <span style="color: #eb9338; font-weight: 600;">с</span>&nbsp;единой архитектурной концепцией, <span style="color: #eb9338; font-weight: 600;">закрытой территорией и&nbsp;собственной инфраструктурой</span>. Пространство, где каждая деталь продумана для комфортной городской жизни.</p>
+      <div data-r="grid3" style="margin-top: 34px; display: grid; grid-template-columns: repeat(3, minmax(0, 150px)); row-gap: 26px; column-gap: 12px;">
         <div style="display: flex; flex-direction: column; gap: 6px;">
           <span data-count="" style="font-size: 18px; font-weight: 700; line-height: 1; color: #eb9338;">6</span>
           <span style="font-size: 11.5px; font-weight: 400; color: #a29b93;">жилых корпусов</span>
@@ -201,7 +201,7 @@
           <span style="font-size: 11.5px; font-weight: 400; color: #a29b93;">White Box</span>
         </div>
       </div>
-      <button type="button" onClick="{{ goInfra }}" style="margin-top: 28px; height: 42px; padding: 0 22px; background: linear-gradient(135deg, #f09a3e 0%, #d06712 100%); color: #ffffff; border: 0; border-radius: 3px; font-size: 12.5px; font-weight: 600;" style-hover="background: linear-gradient(135deg, #f5a84f 0%, #e07a24 100%);">Подробнее о проекте</button>
+      <button type="button" onClick="{{ goInfra }}" style="margin-top: 36px; height: 52px; padding: 0 28px; background: linear-gradient(135deg, #f09a3e 0%, #d06712 100%); color: #ffffff; border: 0; border-radius: 3px; font-size: 14.5px; font-weight: 600;" style-hover="background: linear-gradient(135deg, #f5a84f 0%, #e07a24 100%);">Подробнее о проекте</button>
     </div>
   </section>
 
@@ -246,53 +246,53 @@
     </div>
   </section>
 
-  <section id="infra" data-r="split" style="position: relative; overflow: hidden; padding: 48px max(40px, calc((100% - 1400px) / 2)); min-height: 400px; background: #22201e; display: flex; align-items: center; justify-content: flex-end;">
+  <section id="infra" data-r="split" style="position: relative; overflow: hidden; padding: 64px max(40px, calc((100% - 1400px) / 2)); min-height: 540px; background: #22201e; display: flex; align-items: center; justify-content: flex-end;">
     <div data-r="media" style="position: absolute; left: 0; top: 0; bottom: 0; width: 56%; overflow: hidden; z-index: 1;">
       <image-slot id="atrium-infra" shape="rect" fit="cover" style="width: 100%; height: 100%;" placeholder="Фото инфраструктуры"></image-slot>
       <div style="position: absolute; inset: 0; pointer-events: none; backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); mask-image: linear-gradient(to left, #000 0%, rgba(0, 0, 0, 0.85) 18%, rgba(0, 0, 0, 0.35) 38%, transparent 56%); -webkit-mask-image: linear-gradient(to left, #000 0%, rgba(0, 0, 0, 0.85) 18%, rgba(0, 0, 0, 0.35) 38%, transparent 56%);"></div>
-      <div style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to left, #22201e 0%, rgba(34, 32, 30, 0.94) 16%, rgba(34, 32, 30, 0.55) 34%, rgba(34, 32, 30, 0) 58%); width: 921px; height: 401px"></div>
+      <div style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to left, #22201e 0%, rgba(34, 32, 30, 0.94) 16%, rgba(34, 32, 30, 0.55) 34%, rgba(34, 32, 30, 0) 58%); width: 994px; height: 530px"></div>
       <div style="position: absolute; left: 0; right: 0; top: 0; height: 80px; pointer-events: none; background: linear-gradient(to bottom, rgba(34, 32, 30, 0.9) 0%, rgba(34, 32, 30, 0) 100%);"></div>
       <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 80px; pointer-events: none; background: linear-gradient(to top, rgba(34, 32, 30, 0.9) 0%, rgba(34, 32, 30, 0) 100%);"></div>
     </div>
-    <div data-r="textcol" style="position: relative; z-index: 2; width: 42%; min-width: 400px; max-width: 440px; display: flex; flex-direction: column; align-items: flex-start;">
-      <h2 style="font-size: 30px; font-weight: 700; letter-spacing: -0.01em; color: #f6f3ef;">Инфраструктура</h2>
-      <p style="margin-top: 12px; font-size: 12.5px; font-weight: 600; line-height: 1.6; color: #a9a29a;">Всё необходимое для&nbsp;комфортной жизни<br>подобрано и&nbsp;рядом — в&nbsp;шаговой доступности.</p>
-      <ul data-r="grid2" style="margin-top: 22px; display: grid; grid-template-columns: repeat(2, 1fr); row-gap: 20px; column-gap: 30px; width: 100%;">
-        <li style="display: flex; align-items: flex-start; gap: 12px;">
-          <span style="flex: none; width: 28px; height: 28px; border-radius: 50%; border: 1px solid rgba(224, 122, 36, 0.55); display: flex; align-items: center; justify-content: center;">
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#e07a24" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6.2V9.8M4.2 4.8V11.2M11.8 4.8V11.2M14 6.2V9.8M4.2 8H11.8"></path></svg>
+    <div data-r="textcol" style="position: relative; z-index: 2; width: 42%; min-width: 400px; max-width: 540px; display: flex; flex-direction: column; align-items: flex-start;">
+      <h2 style="font-size: 38px; font-weight: 700; letter-spacing: -0.01em; color: #f6f3ef;">Инфраструктура</h2>
+      <p style="margin-top: 16px; font-size: 15px; font-weight: 600; line-height: 1.6; color: #a9a29a;">Всё необходимое для&nbsp;комфортной жизни<br>подобрано и&nbsp;рядом — в&nbsp;шаговой доступности.</p>
+      <ul data-r="grid2" style="margin-top: 30px; display: grid; grid-template-columns: repeat(2, 1fr); row-gap: 26px; column-gap: 34px; width: 100%;">
+        <li style="display: flex; align-items: flex-start; gap: 14px;">
+          <span style="flex: none; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(224, 122, 36, 0.55); display: flex; align-items: center; justify-content: center;">
+            <svg width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="#e07a24" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6.2V9.8M4.2 4.8V11.2M11.8 4.8V11.2M14 6.2V9.8M4.2 8H11.8"></path></svg>
           </span>
-          <span style="font-size: 12px; font-weight: 400; line-height: 1.45; color: #e6e2dc;">Фитнес-зал только<br>для&nbsp;жителей</span>
+          <span style="font-size: 14.5px; font-weight: 400; line-height: 1.45; color: #e6e2dc;">Фитнес-зал только<br>для&nbsp;жителей</span>
         </li>
-        <li style="display: flex; align-items: flex-start; gap: 12px;">
-          <span style="flex: none; width: 28px; height: 28px; border-radius: 50%; border: 1px solid rgba(224, 122, 36, 0.55); display: flex; align-items: center; justify-content: center;">
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#e07a24" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6.8V13.2H13V6.8"></path><path d="M1.8 6.8L3.4 3.4H12.6L14.2 6.8H1.8Z"></path><path d="M6.6 13.2V9.6H9.4V13.2"></path></svg>
+        <li style="display: flex; align-items: flex-start; gap: 14px;">
+          <span style="flex: none; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(224, 122, 36, 0.55); display: flex; align-items: center; justify-content: center;">
+            <svg width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="#e07a24" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6.8V13.2H13V6.8"></path><path d="M1.8 6.8L3.4 3.4H12.6L14.2 6.8H1.8Z"></path><path d="M6.6 13.2V9.6H9.4V13.2"></path></svg>
           </span>
-          <span style="font-size: 12px; font-weight: 400; line-height: 1.45; color: #e6e2dc;">Коммерческие<br>помещения</span>
+          <span style="font-size: 14.5px; font-weight: 400; line-height: 1.45; color: #e6e2dc;">Коммерческие<br>помещения</span>
         </li>
-        <li style="display: flex; align-items: flex-start; gap: 12px;">
-          <span style="flex: none; width: 28px; height: 28px; border-radius: 50%; border: 1px solid rgba(224, 122, 36, 0.55); display: flex; align-items: center; justify-content: center;">
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#e07a24" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.2" y="8.6" width="5" height="5" rx="0.8"></rect><rect x="8.8" y="8.6" width="5" height="5" rx="0.8"></rect><path d="M5.4 8.6L8 3.2L10.6 8.6"></path></svg>
+        <li style="display: flex; align-items: flex-start; gap: 14px;">
+          <span style="flex: none; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(224, 122, 36, 0.55); display: flex; align-items: center; justify-content: center;">
+            <svg width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="#e07a24" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.2" y="8.6" width="5" height="5" rx="0.8"></rect><rect x="8.8" y="8.6" width="5" height="5" rx="0.8"></rect><path d="M5.4 8.6L8 3.2L10.6 8.6"></path></svg>
           </span>
-          <span style="font-size: 12px; font-weight: 400; line-height: 1.45; color: #e6e2dc;">Детская игровая<br>комната</span>
+          <span style="font-size: 14.5px; font-weight: 400; line-height: 1.45; color: #e6e2dc;">Детская игровая<br>комната</span>
         </li>
-        <li style="display: flex; align-items: flex-start; gap: 12px;">
-          <span style="flex: none; width: 28px; height: 28px; border-radius: 50%; border: 1px solid rgba(224, 122, 36, 0.55); display: flex; align-items: center; justify-content: center;">
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#e07a24" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 7.2V5.4C3.4 4.6 4 4 4.8 4H11.2C12 4 12.6 4.6 12.6 5.4V7.2"></path><rect x="2.2" y="7.2" width="11.6" height="4.4" rx="1.6"></rect><path d="M4.4 11.6V13.2M11.6 11.6V13.2"></path></svg>
+        <li style="display: flex; align-items: flex-start; gap: 14px;">
+          <span style="flex: none; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(224, 122, 36, 0.55); display: flex; align-items: center; justify-content: center;">
+            <svg width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="#e07a24" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 7.2V5.4C3.4 4.6 4 4 4.8 4H11.2C12 4 12.6 4.6 12.6 5.4V7.2"></path><rect x="2.2" y="7.2" width="11.6" height="4.4" rx="1.6"></rect><path d="M4.4 11.6V13.2M11.6 11.6V13.2"></path></svg>
           </span>
-          <span style="font-size: 12px; font-weight: 400; line-height: 1.45; color: #e6e2dc;">Лобби с&nbsp;ресепшеном<br>и&nbsp;зоной отдыха</span>
+          <span style="font-size: 14.5px; font-weight: 400; line-height: 1.45; color: #e6e2dc;">Лобби с&nbsp;ресепшеном<br>и&nbsp;зоной отдыха</span>
         </li>
-        <li style="display: flex; align-items: flex-start; gap: 12px;">
-          <span style="flex: none; width: 28px; height: 28px; border-radius: 50%; border: 1px solid rgba(224, 122, 36, 0.55); display: flex; align-items: center; justify-content: center;">
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#e07a24" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3.6" width="8" height="5.6" rx="0.8"></rect><path d="M2.4 12.4L3.6 9.2H12.4L13.6 12.4H2.4Z"></path></svg>
+        <li style="display: flex; align-items: flex-start; gap: 14px;">
+          <span style="flex: none; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(224, 122, 36, 0.55); display: flex; align-items: center; justify-content: center;">
+            <svg width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="#e07a24" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3.6" width="8" height="5.6" rx="0.8"></rect><path d="M2.4 12.4L3.6 9.2H12.4L13.6 12.4H2.4Z"></path></svg>
           </span>
-          <span style="font-size: 12px; font-weight: 400; line-height: 1.45; color: #e6e2dc;">Коворкинг<br>и&nbsp;переговорные</span>
+          <span style="font-size: 14.5px; font-weight: 400; line-height: 1.45; color: #e6e2dc;">Коворкинг<br>и&nbsp;переговорные</span>
         </li>
-        <li style="display: flex; align-items: flex-start; gap: 12px;">
-          <span style="flex: none; width: 28px; height: 28px; border-radius: 50%; border: 1px solid rgba(224, 122, 36, 0.55); display: flex; align-items: center; justify-content: center;">
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#e07a24" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 13.6V9.4"></path><path d="M8 2.4L4.4 7.6H11.6L8 2.4Z"></path><path d="M8 6.4L5.4 10.4H10.6L8 6.4Z"></path></svg>
+        <li style="display: flex; align-items: flex-start; gap: 14px;">
+          <span style="flex: none; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(224, 122, 36, 0.55); display: flex; align-items: center; justify-content: center;">
+            <svg width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="#e07a24" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 13.6V9.4"></path><path d="M8 2.4L4.4 7.6H11.6L8 2.4Z"></path><path d="M8 6.4L5.4 10.4H10.6L8 6.4Z"></path></svg>
           </span>
-          <span style="font-size: 12px; font-weight: 400; line-height: 1.45; color: #e6e2dc;">Ландшафтный парк<br>во&nbsp;дворе</span>
+          <span style="font-size: 14.5px; font-weight: 400; line-height: 1.45; color: #e6e2dc;">Ландшафтный парк<br>во&nbsp;дворе</span>
         </li>
       </ul>
     </div>
@@ -389,22 +389,20 @@
     </div>
   </section>
 
-  <section id="cta" data-r="split" style="position: relative; overflow: hidden; padding: 46px max(40px, calc((100% - 1400px) / 2)); min-height: 322px; background: #22201e; display: flex; align-items: center; justify-content: flex-start;">
+  <section id="cta" data-r="split" style="position: relative; overflow: hidden; padding: 60px max(40px, calc((100% - 1400px) / 2)); min-height: 430px; background: #22201e; display: flex; align-items: center; justify-content: flex-start;">
     <div data-r="media" style="position: absolute; right: 0; top: 0; bottom: 0; width: 56%; overflow: hidden; z-index: 1;">
       <image-slot id="atrium-cta" shape="rect" fit="cover" style="width: 100%; height: 100%;" placeholder="Фото офиса продаж"></image-slot>
       <div style="position: absolute; inset: 0; pointer-events: none; backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); mask-image: linear-gradient(to right, #000 0%, rgba(0, 0, 0, 0.85) 18%, rgba(0, 0, 0, 0.35) 38%, transparent 56%); -webkit-mask-image: linear-gradient(to right, #000 0%, rgba(0, 0, 0, 0.85) 18%, rgba(0, 0, 0, 0.35) 38%, transparent 56%);"></div>
-      <div style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to right, #22201e 0%, rgba(34, 32, 30, 0.94) 16%, rgba(34, 32, 30, 0.55) 34%, rgba(34, 32, 30, 0) 58%); width: 465px; height: 311px"></div>
+      <div style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to right, #22201e 0%, rgba(34, 32, 30, 0.94) 16%, rgba(34, 32, 30, 0.55) 34%, rgba(34, 32, 30, 0) 58%); width: 194px; height: 452px"></div>
       <div style="position: absolute; left: 0; right: 0; top: 0; height: 70px; pointer-events: none; background: linear-gradient(to bottom, rgba(34, 32, 30, 0.9) 0%, rgba(34, 32, 30, 0) 100%);"></div>
       <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 70px; pointer-events: none; background: linear-gradient(to top, rgba(34, 32, 30, 0.9) 0%, rgba(34, 32, 30, 0) 100%);"></div>
     </div>
-    <div data-r="textcol" style="position: relative; z-index: 2; width: 44%; min-width: 400px; max-width: 470px; display: flex; flex-direction: column; align-items: flex-start; padding-top: 6px;">
-      <h2 style="font-size: 26px; font-weight: 700; line-height: 1.35; letter-spacing: -0.01em; color: #f6f3ef;">Остались вопросы?<br>Мы&nbsp;с&nbsp;радостью ответим на&nbsp;них</h2>
-      <p style="margin-top: 18px; font-size: 13px; font-weight: 600; line-height: 1.6; color: #b3aca4;">Оставьте заявку, и&nbsp;наш менеджер свяжется<br>с&nbsp;вами в&nbsp;ближайшее время.</p>
+    <div data-r="textcol" style="position: relative; z-index: 2; width: 44%; min-width: 400px; max-width: 560px; display: flex; flex-direction: column; align-items: flex-start; padding-top: 6px;">
+      <h2 style="font-size: 33px; font-weight: 700; line-height: 1.32; letter-spacing: -0.01em; color: #f6f3ef;">Остались вопросы?<br>Мы&nbsp;с&nbsp;радостью ответим на&nbsp;них</h2>
+      <p style="margin-top: 22px; font-size: 15px; font-weight: 600; line-height: 1.6; color: #b3aca4;">Оставьте заявку, и&nbsp;наш менеджер свяжется<br>с&nbsp;вами в&nbsp;ближайшее время.</p>
       <button type="button" onClick="{{ goCta }}" style="margin-top: 24px; height: 44px; padding: 0 26px; background: linear-gradient(135deg, #f09a3e 0%, #d06712 100%); color: #ffffff; border: 0; border-radius: 3px; font-size: 13px; font-weight: 600;" style-hover="background: linear-gradient(135deg, #f5a84f 0%, #e07a24 100%);">Оставить заявку</button>
     </div>
-  </section>
-
-  <footer id="contacts" style="background: #1c1b19; padding: 40px max(40px, calc((100% - 1400px) / 2)) 0;">
+  </section><footer id="contacts" style="background: #1c1b19; padding: 40px max(40px, calc((100% - 1400px) / 2)) 0;">
     <div data-r="footrow" style="display: flex; align-items: flex-start; justify-content: space-between;">
       <div style="width: 300px; display: flex; flex-direction: column; align-items: flex-start;">
         <div style="display: flex; flex-direction: column; gap: 3px;">
@@ -444,9 +442,11 @@
     </div>
     <div style="margin-top: 28px; border-top: 1px solid rgba(255, 255, 255, 0.12); padding: 18px 0 20px; display: flex; align-items: center; justify-content: space-between;">
       <span style="font-size: 11px; font-weight: 400; color: #8b847c;">© 2026 ЖК Атриум. Все права защищены.</span>
-      <a href="./privacy.html" target="_blank" rel="noopener noreferrer" style="font-size: 11px; font-weight: 400; color: #8b847c; transition: color 0.2s ease;" style-hover="color: #eb9338;">Политика конфиденциальности</a>
+      <a href="{{ privacyUrl }}" target="_blank" rel="noopener noreferrer" style="font-size: 11px; font-weight: 400; color: #8b847c; transition: color 0.2s ease;" style-hover="color: #eb9338;">Политика конфиденциальности</a>
     </div>
   </footer>
+
+  
 
   <sc-if value="{{ lightboxOpen }}" hint-placeholder-val="{{ false }}">
     <div data-lightbox="" onClick="{{ closeLightbox }}" style="position: fixed; inset: 0; z-index: 70; background: rgba(10, 9, 8, 0.94); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; animation: lbFade 0.3s ease both;">
