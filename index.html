@@ -32,7 +32,9 @@
     [data-r="textcol"] { width: 100% !important; min-width: 0 !important; max-width: none !important; height: auto !important; }
     [data-r="media"] { position: relative !important; width: 100% !important; height: auto !important; aspect-ratio: 16 / 9 !important; margin-top: 24px !important; }
     [data-r="fadex"] { display: none !important; }
-    [data-r="fadey"] { height: 48px !important; }
+    [data-r="fadeytop"], [data-r="fadeybot"] { height: 46% !important; backdrop-filter: blur(13px) !important; -webkit-backdrop-filter: blur(13px) !important; }
+    [data-r="fadeytop"] { mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.55) 42%, transparent 100%) !important; -webkit-mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.55) 42%, transparent 100%) !important; }
+    [data-r="fadeybot"] { mask-image: linear-gradient(to top, #000 0%, rgba(0, 0, 0, 0.55) 42%, transparent 100%) !important; -webkit-mask-image: linear-gradient(to top, #000 0%, rgba(0, 0, 0, 0.55) 42%, transparent 100%) !important; }
     [data-r="grid6"] { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
     [data-r="grid4"] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
     [data-r="grid3"] { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; column-gap: 22px !important; }
@@ -51,7 +53,6 @@
     [data-r="grid2"] li span:first-child { width: 32px !important; height: 32px !important; }
     [data-r="grid2"] li p, [data-r="grid2"] li span:last-child { font-size: 12px !important; line-height: 1.45 !important; }
     [data-r="media"] { height: auto !important; aspect-ratio: 16 / 10 !important; width: calc(100% + 40px) !important; margin-left: -20px !important; margin-right: -20px !important; }
-    [data-r="fadex"], [data-r="fadey"] { display: none !important; }
     [data-r="heroactions"] { flex-direction: column !important; align-items: stretch !important; gap: 12px !important; width: 100% !important; }
     [data-r="heroactions"] > * { width: 100% !important; }
     [data-r="heroactions"] button, [data-r="heroactions"] a { width: 100% !important; height: 52px !important; padding: 0 18px !important; font-size: 14.5px !important; }
@@ -61,6 +62,8 @@
     [data-r="footlogo"] { grid-column: 1 / -1 !important; width: 160px !important; margin: 0 auto !important; }
     [data-r="footbottom"] { flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; }
     [data-r="footbottom"] span { white-space: nowrap !important; }
+    [data-r="brhide"] { display: none !important; }
+    [data-r="textcol"] h1 { text-wrap: initial !important; }
     h1 { font-size: 30px !important; }
     h2 { font-size: 23px !important; }
   }
@@ -116,7 +119,7 @@
   <section id="top" data-r="split" style="position: relative; overflow: hidden; background: #1c1b19; padding: 52px max(40px, calc((100% - 1400px) / 2)) 62px; min-height: 640px; display: flex; align-items: center; justify-content: flex-start;">
     <div data-r="textcol" style="position: relative; z-index: 2; width: 42%; min-width: 420px; max-width: 620px; padding-top: 0px; display: flex; flex-direction: column; align-items: flex-start; height: auto; gap: 0px">
       <div style="display: inline-flex; align-items: center; border: 1px solid rgba(255, 255, 255, 0.28); border-radius: 999px; padding: 9px 19px; font-size: 13px; font-weight: 400; color: #F6F3EF; border-color: #EB913747">Новосибирск, ул. Военная, 23</div>
-      <h1 style="margin-top: 24px; font-size: 52px; font-weight: 700; line-height: 1.18; letter-spacing: -0.015em; color: #f6f3ef; width: 100%; height: auto;">Пространство, созданное для&nbsp;комфортной жизни</h1><p style="margin-top: 18px; font-size: 17px; font-weight: 600; line-height: 1.6; color: #b3aca4;">Современный жилой комплекс бизнес-класса<br>в&nbsp;центре Новосибирска</p>
+      <h1 style="margin-top: 24px; font-size: 52px; font-weight: 700; line-height: 1.18; letter-spacing: -0.015em; color: #f6f3ef; width: 100%; height: auto;">Пространство, созданное для&nbsp;комфортной жизни</h1><p style="margin-top: 18px; font-size: 17px; font-weight: 600; line-height: 1.6; color: #b3aca4;">Современный жилой комплекс бизнес-класса<br data-r="brhide">в&nbsp;центре Новосибирска</p>
       
       <div data-r="heroactions" style="margin-top: 34px; display: flex; align-items: center; gap: 18px;">
         <button type="button" onClick="{{ goPlans }}" style="height: 56px; padding: 0 34px; background: linear-gradient(135deg, #f09a3e 0%, #d06712 100%); color: #ffffff; border: 0; border-radius: 3px; font-size: 15.5px; font-weight: 600;" style-hover="background: linear-gradient(135deg, #f5a84f 0%, #e07a24 100%);">Выбрать квартиру</button>
@@ -131,8 +134,8 @@
       <image-slot id="atrium-hero" shape="rect" fit="cover" style="width: 100%; height: 100%" placeholder="Фото ЖК — горизонтальное, от 2000 px"><div data-r="fadex" style="position: absolute; inset: 0; pointer-events: none; backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); mask-image: linear-gradient(to right, #000 0%, rgba(0, 0, 0, 0.85) 18%, rgba(0, 0, 0, 0.35) 38%, transparent 56%); -webkit-mask-image: linear-gradient(to right, #000 0%, rgba(0, 0, 0, 0.85) 18%, rgba(0, 0, 0, 0.35) 38%, transparent 56%);"></div></image-slot>
       
       <div data-r="fadex" style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to right, #1c1b19 0%, rgba(28, 27, 25, 0.94) 16%, rgba(28, 27, 25, 0.55) 34%, rgba(28, 27, 25, 0) 58%);"></div>
-      <div data-r="fadey" style="position: absolute; left: 0; right: 0; top: 0; height: 83px; pointer-events: none; background: linear-gradient(to bottom, rgba(28, 27, 25, 0.9) 0%, rgba(28, 27, 25, 0) 100%);"></div>
-      <div data-r="fadey" style="position: absolute; left: 0; right: 0; bottom: 0; height: 90px; pointer-events: none; background: linear-gradient(to top, rgba(28, 27, 25, 0.9) 0%, rgba(28, 27, 25, 0) 100%);"></div>
+      <div data-r="fadeytop" style="position: absolute; left: 0; right: 0; top: 0; height: 83px; pointer-events: none; background: linear-gradient(to bottom, rgba(28, 27, 25, 0.9) 0%, rgba(28, 27, 25, 0) 100%);"></div>
+      <div data-r="fadeybot" style="position: absolute; left: 0; right: 0; bottom: 0; height: 90px; pointer-events: none; background: linear-gradient(to top, rgba(28, 27, 25, 0.9) 0%, rgba(28, 27, 25, 0) 100%);"></div>
     </div>
   </section><section style="position: relative; overflow: hidden; padding: 46px max(40px, calc((100% - 1400px) / 2)) 44px; background: linear-gradient(180deg, #efeae3 0%, #f7f4f0 46%, #f5f2ee 100%);">
     <div style="position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(28, 27, 25, 0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(28, 27, 25, 0.045) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 70% 62% at 50% 46%, #000 0%, transparent 78%); -webkit-mask-image: radial-gradient(ellipse 70% 62% at 50% 46%, #000 0%, transparent 78%);"></div>
@@ -154,14 +157,14 @@
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#d06712" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 1.9L13.2 3.7V8C13.2 11.1 10.9 13.2 8 14.1C5.1 13.2 2.8 11.1 2.8 8V3.7L8 1.9Z"></path><path d="M5.9 8.1L7.4 9.6L10.3 6.6"></path></svg>
         </div>
         <h3 style="margin-top: 14px; font-size: 13.5px; font-weight: 700; line-height: 1.4;">Закрытый двор<br>без&nbsp;машин</h3>
-        <p style="margin-top: 10px; font-size: 12px; font-weight: 400; line-height: 1.55; color: #6d675f;">Безопасное пространство<br>для вас и&nbsp;ваших детей</p>
+        <p style="margin-top: 10px; font-size: 12px; font-weight: 400; line-height: 1.55; color: #6d675f;">Безопасное пространство<br>для&nbsp;вас и&nbsp;ваших детей</p>
       </article>
       <article style="display: flex; flex-direction: column; align-items: flex-start; padding: 20px 16px 22px; background: #ffffff; border: 1px solid #e7e0d7; border-radius: 4px; transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;" style-hover="transform: translateY(-4px); border-color: #eb9338; box-shadow: 0 14px 30px rgba(40, 30, 20, 0.09);">
         <div style="width: 38px; height: 38px; border-radius: 10%; background: linear-gradient(135deg, rgba(240, 154, 62, 0.18) 0%, rgba(208, 103, 18, 0.12) 100%); display: flex; align-items: center; justify-content: center">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#d06712" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.4" y="2.4" width="11.2" height="11.2" rx="2"></rect><path d="M6.4 11.2V4.9H8.7C9.8 4.9 10.6 5.7 10.6 6.8C10.6 7.9 9.8 8.7 8.7 8.7H6.4"></path></svg>
         </div>
         <h3 style="margin-top: 14px; font-size: 13.5px; font-weight: 700; line-height: 1.4;">Подземный<br>паркинг</h3>
-        <p style="margin-top: 10px; font-size: 12px; font-weight: 400; line-height: 1.55; color: #6d675f;">Ваш автомобиль в&nbsp;безопасности и&nbsp;всегда под рукой</p>
+        <p style="margin-top: 10px; font-size: 12px; font-weight: 400; line-height: 1.55; color: #6d675f;">Ваш автомобиль в&nbsp;безопасности и&nbsp;всегда под&nbsp;рукой</p>
       </article>
       <article style="display: flex; flex-direction: column; align-items: flex-start; padding: 20px 16px 22px; background: #ffffff; border: 1px solid #e7e0d7; border-radius: 4px; transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;" style-hover="transform: translateY(-4px); border-color: #eb9338; box-shadow: 0 14px 30px rgba(40, 30, 20, 0.09);">
         <div style="width: 38px; height: 38px; border-radius: 10%; background: linear-gradient(135deg, rgba(240, 154, 62, 0.18) 0%, rgba(208, 103, 18, 0.12) 100%); display: flex; align-items: center; justify-content: center">
@@ -192,12 +195,12 @@
       <image-slot id="atrium-about" shape="rect" fit="cover" style="width: 100%; height: 100%;" placeholder="Фото двора"></image-slot>
       <div data-r="fadex" style="position: absolute; inset: 0; pointer-events: none; backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); mask-image: linear-gradient(to right, #000 0%, rgba(0, 0, 0, 0.85) 18%, rgba(0, 0, 0, 0.35) 38%, transparent 56%); -webkit-mask-image: linear-gradient(to right, #000 0%, rgba(0, 0, 0, 0.85) 18%, rgba(0, 0, 0, 0.35) 38%, transparent 56%);"></div>
       <div data-r="fadex" style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to right, #1c1b19 0%, rgba(28, 27, 25, 0.94) 16%, rgba(28, 27, 25, 0.55) 34%, rgba(28, 27, 25, 0) 58%);"></div>
-      <div data-r="fadey" style="position: absolute; left: 0; right: 0; top: 0; height: 84px; pointer-events: none; background: linear-gradient(to bottom, rgba(28, 27, 25, 0.9) 0%, rgba(28, 27, 25, 0) 100%);"></div>
-      <div data-r="fadey" style="position: absolute; left: 0; right: 0; bottom: 0; height: 90px; pointer-events: none; background: linear-gradient(to top, rgba(28, 27, 25, 0.9) 0%, rgba(28, 27, 25, 0) 100%);"></div>
+      <div data-r="fadeytop" style="position: absolute; left: 0; right: 0; top: 0; height: 84px; pointer-events: none; background: linear-gradient(to bottom, rgba(28, 27, 25, 0.9) 0%, rgba(28, 27, 25, 0) 100%);"></div>
+      <div data-r="fadeybot" style="position: absolute; left: 0; right: 0; bottom: 0; height: 90px; pointer-events: none; background: linear-gradient(to top, rgba(28, 27, 25, 0.9) 0%, rgba(28, 27, 25, 0) 100%);"></div>
     </div>
     <div data-r="textcol" style="position: relative; z-index: 2; width: 40%; min-width: 360px; max-width: 500px; display: flex; flex-direction: column; align-items: flex-start;">
       <h2 style="font-size: 38px; font-weight: 700; letter-spacing: -0.01em; color: #f6f3ef;">О проекте</h2>
-      <p style="margin-top: 24px; font-size: 16px; font-weight: 400; line-height: 1.75; color: #b3aca4; max-width: 470px; text-wrap: pretty;"><span style="color: #eb9338; font-weight: 600;">ЖК «Атриум»</span> — современный <span style="color: #eb9338; font-weight: 600;">жилой комплекс</span> бизнес-класса, объединяющий несколько жилых домов <span style="color: #eb9338; font-weight: 600;">с</span>&nbsp;единой архитектурной концепцией, <span style="color: #eb9338; font-weight: 600;">закрытой территорией и&nbsp;собственной инфраструктурой</span>. Пространство, где каждая деталь продумана для комфортной городской жизни.</p>
+      <p style="margin-top: 24px; font-size: 16px; font-weight: 400; line-height: 1.75; color: #b3aca4; max-width: 470px; text-wrap: pretty;"><span style="color: #eb9338; font-weight: 600;">ЖК «Атриум»</span> — современный <span style="color: #eb9338; font-weight: 600;">жилой комплекс</span> бизнес-класса, объединяющий несколько жилых домов <span style="color: #eb9338; font-weight: 600;">с</span>&nbsp;единой архитектурной концепцией, <span style="color: #eb9338; font-weight: 600;">закрытой территорией и&nbsp;собственной инфраструктурой</span>. Пространство, где&nbsp;каждая деталь продумана для&nbsp;комфортной городской жизни.</p>
       <div data-r="grid3" style="margin-top: 34px; display: grid; grid-template-columns: repeat(3, minmax(0, 150px)); row-gap: 26px; column-gap: 12px;">
         <div style="display: flex; flex-direction: column; gap: 6px;">
           <span data-count="" style="font-size: 18px; font-weight: 700; line-height: 1; color: #eb9338;">6</span>
@@ -274,8 +277,8 @@
       <image-slot id="atrium-infra" shape="rect" fit="cover" style="width: 100%; height: 100%;" placeholder="Фото инфраструктуры"></image-slot>
       <div data-r="fadex" style="position: absolute; inset: 0; pointer-events: none; backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); mask-image: linear-gradient(to left, #000 0%, rgba(0, 0, 0, 0.85) 18%, rgba(0, 0, 0, 0.35) 38%, transparent 56%); -webkit-mask-image: linear-gradient(to left, #000 0%, rgba(0, 0, 0, 0.85) 18%, rgba(0, 0, 0, 0.35) 38%, transparent 56%);"></div>
       <div data-r="fadex" style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to left, #22201e 0%, rgba(34, 32, 30, 0.94) 16%, rgba(34, 32, 30, 0.55) 34%, rgba(34, 32, 30, 0) 58%);"></div>
-      <div data-r="fadey" style="position: absolute; left: 0; right: 0; top: 0; height: 80px; pointer-events: none; background: linear-gradient(to bottom, rgba(34, 32, 30, 0.9) 0%, rgba(34, 32, 30, 0) 100%);"></div>
-      <div data-r="fadey" style="position: absolute; left: 0; right: 0; bottom: 0; height: 80px; pointer-events: none; background: linear-gradient(to top, rgba(34, 32, 30, 0.9) 0%, rgba(34, 32, 30, 0) 100%);"></div>
+      <div data-r="fadeytop" style="position: absolute; left: 0; right: 0; top: 0; height: 80px; pointer-events: none; background: linear-gradient(to bottom, rgba(34, 32, 30, 0.9) 0%, rgba(34, 32, 30, 0) 100%);"></div>
+      <div data-r="fadeybot" style="position: absolute; left: 0; right: 0; bottom: 0; height: 80px; pointer-events: none; background: linear-gradient(to top, rgba(34, 32, 30, 0.9) 0%, rgba(34, 32, 30, 0) 100%);"></div>
     </div>
     <div data-r="textcol" style="position: relative; z-index: 2; width: 42%; min-width: 400px; max-width: 540px; display: flex; flex-direction: column; align-items: flex-start;">
       <h2 style="font-size: 38px; font-weight: 700; letter-spacing: -0.01em; color: #f6f3ef;">Инфраструктура</h2>
@@ -408,7 +411,7 @@
       </article>
     </div>
     <div style="margin-top: 24px; display: flex; justify-content: center;">
-      <button type="button" onClick="{{ openPhoto0 }}" style="height: 42px; padding: 0 26px; background: transparent; color: #d06712; border: 1px solid #d06712; border-radius: 3px; font-size: 12.5px; font-weight: 600;" style-hover="background: linear-gradient(135deg, #f09a3e 0%, #d06712 100%); color: #ffffff; border-color: transparent;">Смотреть все фотографии</button>
+      <button type="button" onClick="{{ openPhoto0 }}" style="height: 42px; padding: 0 26px; background: transparent; color: #d06712; border: 1px solid #d06712; border-radius: 3px; font-size: 12.5px; font-weight: 600;" style-hover="background: linear-gradient(135deg, #f09a3e 0%, #d06712 100%); color: #ffffff; border-color: transparent;">Смотреть все&nbsp;фотографии</button>
     </div>
   </section>
 
@@ -417,8 +420,8 @@
       <image-slot id="atrium-cta" shape="rect" fit="cover" style="width: 100%; height: 100%;" placeholder="Фото офиса продаж"></image-slot>
       <div data-r="fadex" style="position: absolute; inset: 0; pointer-events: none; backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); mask-image: linear-gradient(to right, #000 0%, rgba(0, 0, 0, 0.85) 18%, rgba(0, 0, 0, 0.35) 38%, transparent 56%); -webkit-mask-image: linear-gradient(to right, #000 0%, rgba(0, 0, 0, 0.85) 18%, rgba(0, 0, 0, 0.35) 38%, transparent 56%);"></div>
       <div data-r="fadex" style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to right, #22201e 0%, rgba(34, 32, 30, 0.94) 16%, rgba(34, 32, 30, 0.55) 34%, rgba(34, 32, 30, 0) 58%);"></div>
-      <div data-r="fadey" style="position: absolute; left: 0; right: 0; top: 0; height: 70px; pointer-events: none; background: linear-gradient(to bottom, rgba(34, 32, 30, 0.9) 0%, rgba(34, 32, 30, 0) 100%);"></div>
-      <div data-r="fadey" style="position: absolute; left: 0; right: 0; bottom: 0; height: 70px; pointer-events: none; background: linear-gradient(to top, rgba(34, 32, 30, 0.9) 0%, rgba(34, 32, 30, 0) 100%);"></div>
+      <div data-r="fadeytop" style="position: absolute; left: 0; right: 0; top: 0; height: 70px; pointer-events: none; background: linear-gradient(to bottom, rgba(34, 32, 30, 0.9) 0%, rgba(34, 32, 30, 0) 100%);"></div>
+      <div data-r="fadeybot" style="position: absolute; left: 0; right: 0; bottom: 0; height: 70px; pointer-events: none; background: linear-gradient(to top, rgba(34, 32, 30, 0.9) 0%, rgba(34, 32, 30, 0) 100%);"></div>
     </div>
     <div data-r="textcol" style="position: relative; z-index: 2; width: 44%; min-width: 400px; max-width: 560px; display: flex; flex-direction: column; align-items: flex-start; padding-top: 6px;">
       <h2 style="font-size: 33px; font-weight: 700; line-height: 1.32; letter-spacing: -0.01em; color: #f6f3ef;">Остались вопросы?<br>Мы&nbsp;с&nbsp;радостью ответим на&nbsp;них</h2>
@@ -432,7 +435,7 @@
           <span style="font-size: 19px; font-weight: 700; letter-spacing: 0.08em; line-height: 1; color: #f6f3ef;">АТРИУМ</span>
           <span style="font-size: 9.5px; font-weight: 400; letter-spacing: 0.14em; color: #a29b93; line-height: 1;">жилой комплекс</span>
         </div>
-        <p style="margin-top: 20px; font-size: 11.5px; font-weight: 400; line-height: 1.7; color: #a9a29a;">Атриум — современный жилой комплекс бизнес-класса в&nbsp;центре Новосибирска. Пространство для жизни нового уровня.</p>
+        <p style="margin-top: 20px; font-size: 11.5px; font-weight: 400; line-height: 1.7; color: #a9a29a;">Атриум — современный жилой комплекс бизнес-класса в&nbsp;центре Новосибирска. Пространство для&nbsp;жизни нового уровня.</p>
         <div style="margin-top: 22px; display: flex; align-items: center; gap: 10px;">
           <a href="#vk" style="width: 30px; height: 30px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.22); display: flex; align-items: center; justify-content: center; font-size: 9.5px; font-weight: 700; letter-spacing: 0.02em; color: #ded8d0;">VK</a>
           <a href="#instagram" style="width: 30px; height: 30px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.22); display: flex; align-items: center; justify-content: center;">
