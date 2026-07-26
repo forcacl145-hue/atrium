@@ -63,6 +63,7 @@
     [data-r="footbottom"] { flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; }
     [data-r="footbottom"] span { white-space: nowrap !important; }
     [data-r="brhide"] { display: none !important; }
+    [data-r="mapframe"] { height: 220px !important; }
     [data-r="textcol"] h1 { text-wrap: initial !important; }
     h1 { font-size: 30px !important; }
     h2 { font-size: 23px !important; }
@@ -374,11 +375,15 @@
         <span style="margin-top: 8px; font-size: 11.5px; font-weight: 400; color: #6d675f;">школа</span>
       </div>
     </div>
-    <figure style="position: relative; z-index: 1; margin: 22px 0 0; width: 100%; height: 112px; background: #22201e; border-radius: 4px; display: flex; align-items: center; justify-content: center;">
-      <svg width="30" height="36" viewBox="0 0 30 36" fill="none" aria-hidden="true">
-        <path d="M15 1C7.8 1 2 6.8 2 14C2 23 15 35 15 35C15 35 28 23 28 14C28 6.8 22.2 1 15 1Z" stroke="#e07a24" stroke-width="1.5"></path>
-        <circle cx="15" cy="14" r="4.5" stroke="#e07a24" stroke-width="1.5"></circle>
-      </svg>
+    <figure data-r="mapframe" style="position: relative; z-index: 1; margin: 22px 0 0; width: 100%; height: 300px; border-radius: 4px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+      <iframe src="https://yandex.ru/map-widget/v1/?text=%D0%9D%D0%BE%D0%B2%D0%BE%D1%81%D0%B8%D0%B1%D0%B8%D1%80%D1%81%D0%BA%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%A1%D0%BF%D0%BE%D1%80%D1%82%D0%B8%D0%B2%D0%BD%D0%B0%D1%8F%2C%209&z=16&l=map" title="Карта: Новосибирск, улица Спортивная, 9" loading="lazy" tabindex="-1" style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0; pointer-events: none; filter: grayscale(0.35) brightness(0.52) contrast(1.05);"></iframe>
+      <a href="https://yandex.ru/maps/65/novosibirsk/?text=Новосибирск%2C%20улица%20Спортивная%2C%209" target="_blank" rel="noopener noreferrer" aria-label="Открыть карту в Яндекс Картах" style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; background: rgba(28, 27, 25, 0.34); transition: background-color 0.25s ease;" style-hover="background: rgba(28, 27, 25, 0.16);">
+        <svg width="30" height="36" viewBox="0 0 30 36" fill="none" aria-hidden="true">
+          <path d="M15 1C7.8 1 2 6.8 2 14C2 23 15 35 15 35C15 35 28 23 28 14C28 6.8 22.2 1 15 1Z" fill="#ffffff" stroke="#e07a24" stroke-width="1.5"></path>
+          <circle cx="15" cy="14" r="4.5" stroke="#e07a24" stroke-width="1.5"></circle>
+        </svg>
+        <span style="padding: 7px 14px; border-radius: 3px; background: rgba(28, 27, 25, 0.82); font-size: 11.5px; font-weight: 600; color: #f6f3ef;">Открыть в&nbsp;Яндекс Картах</span>
+      </a>
     </figure>
   </section>
 
@@ -425,7 +430,7 @@
     </div>
     <div data-r="textcol" style="position: relative; z-index: 2; width: 44%; min-width: 400px; max-width: 560px; display: flex; flex-direction: column; align-items: flex-start; padding-top: 6px;">
       <h2 style="font-size: 33px; font-weight: 700; line-height: 1.32; letter-spacing: -0.01em; color: #f6f3ef;">Остались вопросы?<br>Мы&nbsp;с&nbsp;радостью ответим на&nbsp;них</h2>
-      <p style="margin-top: 22px; font-size: 15px; font-weight: 600; line-height: 1.6; color: #b3aca4;">Оставьте заявку, и&nbsp;наш менеджер свяжется<br>с&nbsp;вами в&nbsp;ближайшее время.</p>
+      <p style="margin-top: 22px; font-size: 15px; font-weight: 600; line-height: 1.6; color: #b3aca4;">Оставьте заявку, и&nbsp;наш менеджер свяжется с&nbsp;вами в&nbsp;ближайшее время.</p>
       <button type="button" onClick="{{ goCta }}" style="margin-top: 24px; height: 44px; padding: 0 26px; background: linear-gradient(135deg, #f09a3e 0%, #d06712 100%); color: #ffffff; border: 0; border-radius: 3px; font-size: 13px; font-weight: 600;" style-hover="background: linear-gradient(135deg, #f5a84f 0%, #e07a24 100%);">Оставить заявку</button>
     </div>
   </section><footer id="contacts" style="background: #1c1b19; padding: 40px max(40px, calc((100% - 1400px) / 2)) 0;">
