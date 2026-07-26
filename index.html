@@ -56,6 +56,12 @@
     [data-m="mapframe"] { height: 240px !important; margin-top: 30px !important; }
     [data-m="formcard"] { padding: 34px 24px 30px !important; }
     [data-m="footlogo"] { max-width: 150px !important; }
+    [data-m="g3"] > article { padding: 26px 18px 30px !important; }
+    [data-m="g3"] > article h3 { font-size: 19px !important; line-height: 1.2 !important; overflow-wrap: break-word !important; hyphens: auto !important; }
+    [data-m="g3"] > article p { font-size: 12.5px !important; overflow-wrap: break-word !important; }
+    [data-m="planrow"] { flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; }
+    [data-m="planrow"] h3 { font-size: 20px !important; }
+    [data-m="footbottom"] span, [data-m="footbottom"] a { font-size: 10.5px !important; }
     [data-m="g6"], [data-m="g4"], [data-m="g3"], [data-m="g2"] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
     [data-m="mosaic"] { grid-template-columns: minmax(0, 1fr) !important; grid-auto-rows: 230px !important; }
     [data-m="heroactions"] { flex-direction: column !important; align-items: stretch !important; width: 100% !important; }
@@ -255,28 +261,28 @@
     <div data-m="g4" style="margin-top: 58px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: rgba(20, 18, 15, 0.12);">
       <article data-rv="" onClick="{{ openPlan0 }}" style="padding: 26px 24px 30px; background: #f9f6f1; display: flex; flex-direction: column; cursor: zoom-in; transition: background-color 0.35s ease;" style-hover="background: #ffffff;">
         <img src="./plan-1.png" data-draw="" alt="Планировка 1-комнатной квартиры" style="display: block; width: 100%; height: 210px; object-fit: contain; transition: transform 0.5s cubic-bezier(0.22, 0.8, 0.25, 1);" style-hover="transform: scale(1.05);">
-        <div style="margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(20, 18, 15, 0.12); display: flex; align-items: baseline; justify-content: space-between;">
+        <div data-m="planrow" style="margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(20, 18, 15, 0.12); display: flex; align-items: baseline; justify-content: space-between;">
           <h3 style="font-size: 23px; font-weight: 400; color: #14120f;">1-комнатные</h3>
           <span style="font-size: 12px; font-weight: 500; letter-spacing: 0.1em; color: #7a5a22;">от&nbsp;48 м²</span>
         </div>
       </article>
       <article data-rv="" onClick="{{ openPlan1 }}" style="padding: 26px 24px 30px; background: #f9f6f1; display: flex; flex-direction: column; cursor: zoom-in; transition: background-color 0.35s ease;" style-hover="background: #ffffff;">
         <img src="./plan-3.png" data-draw="" alt="Планировка 2-комнатной квартиры" style="display: block; width: 100%; height: 210px; object-fit: contain; transition: transform 0.5s cubic-bezier(0.22, 0.8, 0.25, 1);" style-hover="transform: scale(1.05);">
-        <div style="margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(20, 18, 15, 0.12); display: flex; align-items: baseline; justify-content: space-between;">
+        <div data-m="planrow" style="margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(20, 18, 15, 0.12); display: flex; align-items: baseline; justify-content: space-between;">
           <h3 style="font-size: 23px; font-weight: 400; color: #14120f;">2-комнатные</h3>
           <span style="font-size: 12px; font-weight: 500; letter-spacing: 0.1em; color: #7a5a22;">от&nbsp;68 м²</span>
         </div>
       </article>
       <article data-rv="" onClick="{{ openPlan2 }}" style="padding: 26px 24px 30px; background: #f9f6f1; display: flex; flex-direction: column; cursor: zoom-in; transition: background-color 0.35s ease;" style-hover="background: #ffffff;">
         <img src="./plan-5.png" data-draw="" alt="Планировка 3-комнатной квартиры" style="display: block; width: 100%; height: 210px; object-fit: contain; transition: transform 0.5s cubic-bezier(0.22, 0.8, 0.25, 1);" style-hover="transform: scale(1.05);">
-        <div style="margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(20, 18, 15, 0.12); display: flex; align-items: baseline; justify-content: space-between;">
+        <div data-m="planrow" style="margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(20, 18, 15, 0.12); display: flex; align-items: baseline; justify-content: space-between;">
           <h3 style="font-size: 23px; font-weight: 400; color: #14120f;">3-комнатные</h3>
           <span style="font-size: 12px; font-weight: 500; letter-spacing: 0.1em; color: #7a5a22;">от&nbsp;92 м²</span>
         </div>
       </article>
       <article data-rv="" onClick="{{ openPlan3 }}" style="padding: 26px 24px 30px; background: #f9f6f1; display: flex; flex-direction: column; cursor: zoom-in; transition: background-color 0.35s ease;" style-hover="background: #ffffff;">
         <img src="./plan-7.png" data-draw="" alt="Планировка 4-комнатной квартиры" style="display: block; width: 100%; height: 210px; object-fit: contain; transition: transform 0.5s cubic-bezier(0.22, 0.8, 0.25, 1);" style-hover="transform: scale(1.05);">
-        <div style="margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(20, 18, 15, 0.12); display: flex; align-items: baseline; justify-content: space-between;">
+        <div data-m="planrow" style="margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(20, 18, 15, 0.12); display: flex; align-items: baseline; justify-content: space-between;">
           <h3 style="font-size: 23px; font-weight: 400; color: #14120f;">4-комнатные</h3>
           <span style="font-size: 12px; font-weight: 500; letter-spacing: 0.1em; color: #7a5a22;">от&nbsp;120 м²</span>
         </div>
@@ -458,7 +464,7 @@
       <img data-m="footlogo" src="./logo-mark.png" alt="Логотип ЖК Атриум" width="827" height="549" style="display: block; width: 100%; max-width: 210px; height: auto; justify-self: end; opacity: 0.92;">
     </div>
     <div data-m="footbottom" style="margin-top: 64px; border-top: 1px solid rgba(244, 239, 231, 0.08); padding: 24px 0 28px; display: flex; align-items: center; justify-content: space-between;">
-      <span style="font-size: 11px; font-weight: 300; letter-spacing: 0.06em; color: #6f675e;">© 2026 ЖК Атриум. Все права защищены.</span>
+      <span style="font-size: 11px; font-weight: 300; letter-spacing: 0.06em; color: #6f675e;">© 2026 ЖК&nbsp;Атриум. Все&nbsp;права&nbsp;защищены.</span>
       <a href="{{ privacyUrl }}" target="_blank" rel="noopener noreferrer" style="font-size: 11px; font-weight: 300; letter-spacing: 0.06em; color: #6f675e;">Политика конфиденциальности</a>
     </div>
   </footer>
