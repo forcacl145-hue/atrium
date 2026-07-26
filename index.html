@@ -39,8 +39,23 @@
     [data-m="sidemedia"] { height: 320px !important; }
     [data-m="foot"] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
   }
+  @media (max-width: 1000px) {
+    [data-m="spacer"] { display: none !important; }
+    [data-m="strip"] { height: 380px !important; margin-top: 60px !important; }
+    #infra { min-height: 0 !important; }
+    [data-m="mapframe"] { height: 300px !important; }
+    [data-m="footlogo"] { justify-self: start !important; max-width: 180px !important; }
+  }
   @media (max-width: 680px) {
     [data-m="pad"] { padding-left: 22px !important; padding-right: 22px !important; }
+    section { padding-top: 66px !important; padding-bottom: 66px !important; }
+    footer { padding-top: 58px !important; }
+    #top { padding-top: 100px !important; padding-bottom: 46px !important; min-height: 88vh !important; }
+    [data-m="infrascrim"] { background: linear-gradient(to bottom, rgba(20, 18, 15, 0.72) 0%, rgba(20, 18, 15, 0.88) 100%) !important; }
+    [data-m="strip"] { height: 260px !important; margin-top: 44px !important; }
+    [data-m="mapframe"] { height: 240px !important; margin-top: 30px !important; }
+    [data-m="formcard"] { padding: 34px 24px 30px !important; }
+    [data-m="footlogo"] { max-width: 150px !important; }
     [data-m="g6"], [data-m="g4"], [data-m="g3"], [data-m="g2"] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
     [data-m="mosaic"] { grid-template-columns: minmax(0, 1fr) !important; grid-auto-rows: 230px !important; }
     [data-m="heroactions"] { flex-direction: column !important; align-items: stretch !important; width: 100% !important; }
@@ -56,7 +71,7 @@
 
 <div style="width: 100%; background: #0c0b0a; overflow: hidden;">
 
-  <header data-hd="" style="position: sticky; top: 0; z-index: 55; padding: 22px max(28px, calc((100% - 1480px) / 2)); background: rgba(12, 11, 10, 0); display: flex; align-items: center; justify-content: space-between; transition: padding 0.4s cubic-bezier(0.22, 0.8, 0.25, 1), background-color 0.4s ease, backdrop-filter 0.4s ease;">
+  <header data-hd="" style="position: sticky; top: 0; z-index: 55; padding: 22px max(20px, calc((100% - 1480px) / 2)); background: rgba(12, 11, 10, 0); display: flex; align-items: center; justify-content: space-between; transition: padding 0.4s cubic-bezier(0.22, 0.8, 0.25, 1), background-color 0.4s ease, backdrop-filter 0.4s ease;">
     <div data-bar="" style="position: absolute; left: 0; bottom: 0; height: 1px; width: 0%; background: linear-gradient(90deg, #e4c48b 0%, #b0813c 100%);"></div>
     <a href="#top" style="display: flex; flex-direction: column; gap: 4px;">
       <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 25px; font-weight: 500; letter-spacing: 0.3em; line-height: 1; color: #f4efe7;">АТРИУМ</span>
@@ -171,7 +186,7 @@
         </div>
       </div>
     </div>
-    <div data-rv="" style="position: relative; margin-top: 90px; height: 480px; overflow: hidden;">
+    <div data-rv="" data-m="strip" style="position: relative; margin: 90px calc(50% - 50vw) 0; width: 100vw; height: 560px; overflow: hidden;">
       <div data-px="" style="position: absolute; inset: -8% 0;">
         <image-slot id="atrium-about" shape="rect" fit="cover" style="width: 100%; height: 100%;" placeholder="Фото двора"></image-slot>
       </div>
@@ -242,41 +257,41 @@
         <img src="./plan-1.png" data-draw="" alt="Планировка 1-комнатной квартиры" style="display: block; width: 100%; height: 210px; object-fit: contain; transition: transform 0.5s cubic-bezier(0.22, 0.8, 0.25, 1);" style-hover="transform: scale(1.05);">
         <div style="margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(20, 18, 15, 0.12); display: flex; align-items: baseline; justify-content: space-between;">
           <h3 style="font-size: 23px; font-weight: 400; color: #14120f;">1-комнатные</h3>
-          <span style="font-size: 12px; font-weight: 400; letter-spacing: 0.1em; color: #a8813f;">от&nbsp;48 м²</span>
+          <span style="font-size: 12px; font-weight: 500; letter-spacing: 0.1em; color: #7a5a22;">от&nbsp;48 м²</span>
         </div>
       </article>
       <article data-rv="" onClick="{{ openPlan1 }}" style="padding: 26px 24px 30px; background: #f9f6f1; display: flex; flex-direction: column; cursor: zoom-in; transition: background-color 0.35s ease;" style-hover="background: #ffffff;">
         <img src="./plan-3.png" data-draw="" alt="Планировка 2-комнатной квартиры" style="display: block; width: 100%; height: 210px; object-fit: contain; transition: transform 0.5s cubic-bezier(0.22, 0.8, 0.25, 1);" style-hover="transform: scale(1.05);">
         <div style="margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(20, 18, 15, 0.12); display: flex; align-items: baseline; justify-content: space-between;">
           <h3 style="font-size: 23px; font-weight: 400; color: #14120f;">2-комнатные</h3>
-          <span style="font-size: 12px; font-weight: 400; letter-spacing: 0.1em; color: #a8813f;">от&nbsp;68 м²</span>
+          <span style="font-size: 12px; font-weight: 500; letter-spacing: 0.1em; color: #7a5a22;">от&nbsp;68 м²</span>
         </div>
       </article>
       <article data-rv="" onClick="{{ openPlan2 }}" style="padding: 26px 24px 30px; background: #f9f6f1; display: flex; flex-direction: column; cursor: zoom-in; transition: background-color 0.35s ease;" style-hover="background: #ffffff;">
         <img src="./plan-5.png" data-draw="" alt="Планировка 3-комнатной квартиры" style="display: block; width: 100%; height: 210px; object-fit: contain; transition: transform 0.5s cubic-bezier(0.22, 0.8, 0.25, 1);" style-hover="transform: scale(1.05);">
         <div style="margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(20, 18, 15, 0.12); display: flex; align-items: baseline; justify-content: space-between;">
           <h3 style="font-size: 23px; font-weight: 400; color: #14120f;">3-комнатные</h3>
-          <span style="font-size: 12px; font-weight: 400; letter-spacing: 0.1em; color: #a8813f;">от&nbsp;92 м²</span>
+          <span style="font-size: 12px; font-weight: 500; letter-spacing: 0.1em; color: #7a5a22;">от&nbsp;92 м²</span>
         </div>
       </article>
       <article data-rv="" onClick="{{ openPlan3 }}" style="padding: 26px 24px 30px; background: #f9f6f1; display: flex; flex-direction: column; cursor: zoom-in; transition: background-color 0.35s ease;" style-hover="background: #ffffff;">
         <img src="./plan-7.png" data-draw="" alt="Планировка 4-комнатной квартиры" style="display: block; width: 100%; height: 210px; object-fit: contain; transition: transform 0.5s cubic-bezier(0.22, 0.8, 0.25, 1);" style-hover="transform: scale(1.05);">
         <div style="margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(20, 18, 15, 0.12); display: flex; align-items: baseline; justify-content: space-between;">
           <h3 style="font-size: 23px; font-weight: 400; color: #14120f;">4-комнатные</h3>
-          <span style="font-size: 12px; font-weight: 400; letter-spacing: 0.1em; color: #a8813f;">от&nbsp;120 м²</span>
+          <span style="font-size: 12px; font-weight: 500; letter-spacing: 0.1em; color: #7a5a22;">от&nbsp;120 м²</span>
         </div>
       </article>
     </div>
   </section>
 
-  <section id="infra" data-m="pad" style="position: relative; padding: 112px max(28px, calc((100% - 1480px) / 2)); background: #14120f;">
-    <div data-m="split" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 70px; align-items: center;">
-      <div data-rv="" data-m="sidemedia" style="position: relative; height: 560px; overflow: hidden;">
-        <div data-px="" style="position: absolute; inset: -8% 0;">
-          <image-slot id="atrium-infra" shape="rect" fit="cover" style="width: 100%; height: 100%;" placeholder="Фото инфраструктуры"></image-slot>
-        </div>
-        <div style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to right, rgba(20, 18, 15, 0.45) 0%, rgba(20, 18, 15, 0) 45%, rgba(20, 18, 15, 0.55) 100%);"></div>
-      </div>
+  <section id="infra" data-m="pad" style="position: relative; overflow: hidden; min-height: 700px; padding: 112px max(28px, calc((100% - 1480px) / 2)); background: #14120f; display: flex; align-items: center; justify-content: flex-end;">
+    <div data-px="" style="position: absolute; inset: -6% 0; z-index: 0;">
+      <image-slot id="atrium-infra" shape="rect" fit="cover" style="width: 100%; height: 100%;" placeholder="Фото инфраструктуры"></image-slot>
+    </div>
+    <div style="position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(to left, #14120f 0%, rgba(20, 18, 15, 0.96) 34%, rgba(20, 18, 15, 0.7) 66%, rgba(20, 18, 15, 0.45) 100%);" data-m="infrascrim"></div>
+    <div style="position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(to bottom, rgba(20, 18, 15, 0.7) 0%, rgba(20, 18, 15, 0.28) 30%, rgba(20, 18, 15, 0.28) 70%, rgba(20, 18, 15, 0.7) 100%);"></div>
+    <div data-m="split" style="position: relative; z-index: 2; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 70px; align-items: center; width: 100%;">
+      <div data-m="spacer"></div>
       <div style="display: flex; flex-direction: column; align-items: flex-start;">
         <span data-rv="" style="font-size: 10px; font-weight: 300; letter-spacing: 0.34em; text-transform: uppercase; color: #8a8177;">04 — Внутри комплекса</span>
         <h2 data-rv="" style="margin-top: 20px; font-size: clamp(36px, 3.8vw, 58px); font-weight: 300; line-height: 1.06; color: #f7f2ea;">Инфраструктура</h2>
@@ -319,31 +334,31 @@
     </div>
     <div data-rv="" data-m="g6" style="margin-top: 52px; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); border-top: 1px solid rgba(20, 18, 15, 0.14);">
       <div style="padding: 26px 12px 24px; border-bottom: 1px solid rgba(20, 18, 15, 0.14); display: flex; flex-direction: column; align-items: center; gap: 10px;">
-        <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 40px; font-weight: 300; line-height: 1; color: #a8813f;">5</span>
-        <span style="font-size: 9.5px; font-weight: 300; letter-spacing: 0.18em; text-transform: uppercase; color: #6b6359;">мин · метро Октябрьская</span>
+        <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 40px; font-weight: 500; line-height: 1; color: #7a5a22;">5</span>
+        <span style="font-size: 9.5px; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: #4a443c;">мин · метро Октябрьская</span>
       </div>
       <div style="padding: 26px 12px 24px; border-bottom: 1px solid rgba(20, 18, 15, 0.14); display: flex; flex-direction: column; align-items: center; gap: 10px;">
-        <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 40px; font-weight: 300; line-height: 1; color: #a8813f;">7</span>
-        <span style="font-size: 9.5px; font-weight: 300; letter-spacing: 0.18em; text-transform: uppercase; color: #6b6359;">мин · ТЦ Аура</span>
+        <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 40px; font-weight: 500; line-height: 1; color: #7a5a22;">7</span>
+        <span style="font-size: 9.5px; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: #4a443c;">мин · ТЦ Аура</span>
       </div>
       <div style="padding: 26px 12px 24px; border-bottom: 1px solid rgba(20, 18, 15, 0.14); display: flex; flex-direction: column; align-items: center; gap: 10px;">
-        <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 40px; font-weight: 300; line-height: 1; color: #a8813f;">10</span>
-        <span style="font-size: 9.5px; font-weight: 300; letter-spacing: 0.18em; text-transform: uppercase; color: #6b6359;">мин · площадь Ленина</span>
+        <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 40px; font-weight: 500; line-height: 1; color: #7a5a22;">10</span>
+        <span style="font-size: 9.5px; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: #4a443c;">мин · площадь Ленина</span>
       </div>
       <div style="padding: 26px 12px 24px; border-bottom: 1px solid rgba(20, 18, 15, 0.14); display: flex; flex-direction: column; align-items: center; gap: 10px;">
-        <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 40px; font-weight: 300; line-height: 1; color: #a8813f;">8</span>
-        <span style="font-size: 9.5px; font-weight: 300; letter-spacing: 0.18em; text-transform: uppercase; color: #6b6359;">мин · набережная Оби</span>
+        <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 40px; font-weight: 500; line-height: 1; color: #7a5a22;">8</span>
+        <span style="font-size: 9.5px; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: #4a443c;">мин · набережная Оби</span>
       </div>
       <div style="padding: 26px 12px 24px; border-bottom: 1px solid rgba(20, 18, 15, 0.14); display: flex; flex-direction: column; align-items: center; gap: 10px;">
-        <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 40px; font-weight: 300; line-height: 1; color: #a8813f;">4</span>
-        <span style="font-size: 9.5px; font-weight: 300; letter-spacing: 0.18em; text-transform: uppercase; color: #6b6359;">мин · детский сад</span>
+        <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 40px; font-weight: 500; line-height: 1; color: #7a5a22;">4</span>
+        <span style="font-size: 9.5px; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: #4a443c;">мин · детский сад</span>
       </div>
       <div style="padding: 26px 12px 24px; border-bottom: 1px solid rgba(20, 18, 15, 0.14); display: flex; flex-direction: column; align-items: center; gap: 10px;">
-        <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 40px; font-weight: 300; line-height: 1; color: #a8813f;">6</span>
-        <span style="font-size: 9.5px; font-weight: 300; letter-spacing: 0.18em; text-transform: uppercase; color: #6b6359;">мин · школа</span>
+        <span style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 40px; font-weight: 500; line-height: 1; color: #7a5a22;">6</span>
+        <span style="font-size: 9.5px; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: #4a443c;">мин · школа</span>
       </div>
     </div>
-    <figure data-rv="" style="position: relative; margin: 44px 0 0; width: 100%; height: 380px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+    <figure data-rv="" data-m="mapframe" style="position: relative; margin: 44px 0 0; width: 100%; height: 380px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
       <iframe src="https://yandex.ru/map-widget/v1/?text=%D0%9D%D0%BE%D0%B2%D0%BE%D1%81%D0%B8%D0%B1%D0%B8%D1%80%D1%81%D0%BA%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%A1%D0%BF%D0%BE%D1%80%D1%82%D0%B8%D0%B2%D0%BD%D0%B0%D1%8F%2C%209&z=16&l=map" title="Карта: Новосибирск, улица Спортивная, 9" loading="lazy" tabindex="-1" style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0; pointer-events: none; filter: grayscale(0.55) brightness(0.5) contrast(1.05) sepia(0.25);"></iframe>
       <a href="https://yandex.ru/maps/65/novosibirsk/?text=Новосибирск%2C%20улица%20Спортивная%2C%209" target="_blank" rel="noopener noreferrer" aria-label="Открыть карту в Яндекс Картах" style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; background: rgba(12, 11, 10, 0.4); transition: background-color 0.35s ease;" style-hover="background: rgba(12, 11, 10, 0.18);">
         <svg width="28" height="34" viewBox="0 0 30 36" fill="none" aria-hidden="true"><path d="M15 1C7.8 1 2 6.8 2 14C2 23 15 35 15 35C15 35 28 23 28 14C28 6.8 22.2 1 15 1Z" stroke="#e4c48b" stroke-width="1.2"></path><circle cx="15" cy="14" r="4.5" stroke="#e4c48b" stroke-width="1.2"></circle></svg>
@@ -440,7 +455,7 @@
         <span style="font-size: 13px; font-weight: 300; color: #cdc5ba;">ул. Военная, 23</span>
         <span style="font-size: 13px; font-weight: 300; color: #8a8177;">Ежедневно с 9:00 до 21:00</span>
       </address>
-      <img src="./logo-mark.png" alt="Логотип ЖК Атриум" width="827" height="549" style="display: block; width: 100%; max-width: 210px; height: auto; justify-self: end; opacity: 0.92;">
+      <img data-m="footlogo" src="./logo-mark.png" alt="Логотип ЖК Атриум" width="827" height="549" style="display: block; width: 100%; max-width: 210px; height: auto; justify-self: end; opacity: 0.92;">
     </div>
     <div data-m="footbottom" style="margin-top: 64px; border-top: 1px solid rgba(244, 239, 231, 0.08); padding: 24px 0 28px; display: flex; align-items: center; justify-content: space-between;">
       <span style="font-size: 11px; font-weight: 300; letter-spacing: 0.06em; color: #6f675e;">© 2026 ЖК Атриум. Все права защищены.</span>
@@ -471,7 +486,7 @@
 
   <sc-if value="{{ formOpen }}" hint-placeholder-val="{{ false }}">
     <div onClick="{{ closeForm }}" style="position: fixed; inset: 0; z-index: 80; background: rgba(8, 7, 6, 0.86); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; padding: 24px; animation: lbFade 0.28s ease both;">
-      <div onClick="{{ stopClick }}" style="position: relative; width: 100%; max-width: 460px; padding: 44px 42px 40px; background: #f4efe7; color: #14120f; animation: lbZoom 0.42s cubic-bezier(0.2, 0.8, 0.2, 1) both;">
+      <div data-m="formcard" onClick="{{ stopClick }}" style="position: relative; width: 100%; max-width: 460px; padding: 44px 42px 40px; background: #f4efe7; color: #14120f; animation: lbZoom 0.42s cubic-bezier(0.2, 0.8, 0.2, 1) both;">
         <button type="button" onClick="{{ closeForm }}" aria-label="Закрыть" style="position: absolute; top: 18px; right: 18px; width: 34px; height: 34px; background: none; border: 1px solid rgba(20, 18, 15, 0.2); display: flex; align-items: center; justify-content: center; transition: border-color 0.3s ease;" style-hover="border-color: #a8813f;">
           <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 1L13 13M13 1L1 13" stroke="#14120f" stroke-width="1.1" stroke-linecap="round"></path></svg>
         </button>
@@ -605,30 +620,19 @@ class Component extends DCLogic {
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const mobile = window.matchMedia('(max-width: 1000px)').matches;
 
-    this._rvIo = new IntersectionObserver((entries) => {
-      entries.forEach((en) => {
-        if (!en.isIntersecting) return;
-        en.target.style.opacity = '1';
-        en.target.style.transform = 'none';
-        this._rvIo.unobserve(en.target);
-      });
-    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+    this._rv = [];
+    this._words = [];
+    this._nums = [];
+    this._draws = [];
     if (!reduce) {
       root.querySelectorAll('[data-rv]').forEach((el, i) => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(26px)';
         el.style.transition = 'opacity 0.85s ' + ease + ' ' + Math.min(i % 6, 5) * 60 + 'ms, transform 0.85s ' + ease + ' ' + Math.min(i % 6, 5) * 60 + 'ms';
-        this._rvIo.observe(el);
+        this._rv.push(el);
       });
     }
 
-    this._wordIo = new IntersectionObserver((entries) => {
-      entries.forEach((en) => {
-        if (!en.isIntersecting) return;
-        en.target.querySelectorAll('span[data-w]').forEach((s) => { s.style.opacity = '1'; s.style.transform = 'none'; });
-        this._wordIo.unobserve(en.target);
-      });
-    }, { threshold: 0.25 });
     if (!reduce) {
       root.querySelectorAll('[data-words]').forEach((h) => {
         const words = (h.textContent || '').split(' ').filter(Boolean);
@@ -651,28 +655,23 @@ class Component extends DCLogic {
           h.appendChild(wrap);
           if (i < words.length - 1) h.appendChild(document.createTextNode(' '));
         });
-        this._wordIo.observe(h);
+        this._words.push(h);
       });
     }
 
-    this._numIo = new IntersectionObserver((entries) => {
-      entries.forEach((en) => {
-        if (!en.isIntersecting) return;
-        const el = en.target;
-        this._numIo.unobserve(el);
-        const raw = el.dataset.raw, src = el.dataset.val;
-        const dec = src.indexOf(',') >= 0 ? 1 : 0;
-        const target = parseFloat(src.replace(',', '.'));
-        const t0 = performance.now();
-        const tick = (t) => {
-          const k = Math.min(1, (t - t0) / 1200);
-          const v = target * (1 - Math.pow(1 - k, 3));
-          el.textContent = raw.replace(src, dec ? v.toFixed(1).replace('.', ',') : String(Math.round(v)));
-          if (k < 1) requestAnimationFrame(tick);
-        };
-        requestAnimationFrame(tick);
-      });
-    }, { threshold: 0.6 });
+    this.runCount = (el) => {
+      const raw = el.dataset.raw, src = el.dataset.val;
+      const dec = src.indexOf(',') >= 0 ? 1 : 0;
+      const target = parseFloat(src.replace(',', '.'));
+      const t0 = performance.now();
+      const tick = (t) => {
+        const k = Math.min(1, (t - t0) / 1200);
+        const v = target * (1 - Math.pow(1 - k, 3));
+        el.textContent = raw.replace(src, dec ? v.toFixed(1).replace('.', ',') : String(Math.round(v)));
+        if (k < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
     root.querySelectorAll('[data-num]').forEach((el) => {
       const raw = el.textContent || '';
       const m = raw.match(/\d+(?:[.,]\d+)?/);
@@ -680,17 +679,9 @@ class Component extends DCLogic {
       el.dataset.raw = raw;
       el.dataset.val = m[0];
       el.textContent = raw.replace(m[0], m[0].replace(/\d/g, '0'));
-      this._numIo.observe(el);
+      this._nums.push(el);
     });
 
-    this._drawIo = new IntersectionObserver((entries) => {
-      entries.forEach((en) => {
-        if (!en.isIntersecting) return;
-        en.target.style.maskPosition = '0% 100%';
-        en.target.style.webkitMaskPosition = '0% 100%';
-        this._drawIo.unobserve(en.target);
-      });
-    }, { threshold: 0.3 });
     if (!reduce) {
       root.querySelectorAll('[data-draw]').forEach((el) => {
         const hide = 'linear-gradient(to top, #000 0%, #000 50%, rgba(0, 0, 0, 0) 50%)';
@@ -701,9 +692,40 @@ class Component extends DCLogic {
         el.style.maskPosition = '0% 0%';
         el.style.webkitMaskPosition = '0% 0%';
         el.style.transition = 'mask-position 1.15s ' + ease + ', -webkit-mask-position 1.15s ' + ease;
-        this._drawIo.observe(el);
+        this._draws.push(el);
       });
     }
+
+    const visible = (el, ratio) => {
+      const r = el.getBoundingClientRect();
+      if (!r.height && !r.width) return false;
+      const vh = window.innerHeight;
+      return r.top < vh * ratio && r.bottom > 0;
+    };
+    this.scanMotion = () => {
+      this._rv = this._rv.filter((el) => {
+        if (!visible(el, 0.94)) return true;
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+        return false;
+      });
+      this._words = this._words.filter((h) => {
+        if (!visible(h, 0.94)) return true;
+        h.querySelectorAll('span[data-w]').forEach((s) => { s.style.opacity = '1'; s.style.transform = 'none'; });
+        return false;
+      });
+      this._nums = this._nums.filter((el) => {
+        if (!visible(el, 0.88)) return true;
+        this.runCount(el);
+        return false;
+      });
+      this._draws = this._draws.filter((el) => {
+        if (!visible(el, 0.9)) return true;
+        el.style.maskPosition = '0% 100%';
+        el.style.webkitMaskPosition = '0% 100%';
+        return false;
+      });
+    };
 
     const header = document.querySelector('[data-hd]');
     const bar = document.querySelector('[data-bar]');
@@ -711,10 +733,11 @@ class Component extends DCLogic {
     let ticking = false;
     const frame = () => {
       ticking = false;
+      this.scanMotion();
       const y = window.scrollY || document.documentElement.scrollTop;
       if (header) {
         const dense = y > 80;
-        header.style.padding = dense ? '13px max(28px, calc((100% - 1480px) / 2))' : '22px max(28px, calc((100% - 1480px) / 2))';
+        header.style.padding = dense ? '13px max(20px, calc((100% - 1480px) / 2))' : '22px max(20px, calc((100% - 1480px) / 2))';
         header.style.background = dense ? 'rgba(12, 11, 10, 0.82)' : 'rgba(12, 11, 10, 0)';
         header.style.backdropFilter = dense ? 'blur(16px)' : 'none';
         header.style.webkitBackdropFilter = dense ? 'blur(16px)' : 'none';
@@ -738,13 +761,19 @@ class Component extends DCLogic {
     window.addEventListener('resize', this.onScrollFx);
     layers.forEach((el) => { el.style.willChange = 'transform'; });
     frame();
+    this._poll = setInterval(() => this.scanMotion(), 260);
+    setTimeout(() => {
+      this._rv.forEach((el) => { el.style.opacity = '1'; el.style.transform = 'none'; });
+      this._words.forEach((h) => h.querySelectorAll('span[data-w]').forEach((s) => { s.style.opacity = '1'; s.style.transform = 'none'; }));
+      this._draws.forEach((el) => { el.style.maskPosition = '0% 100%'; el.style.webkitMaskPosition = '0% 100%'; });
+    }, 6000);
   }
 
   componentWillUnmount() {
     document.removeEventListener('click', this.onClick);
     document.removeEventListener('keydown', this.onKeyDown);
     if (this.onScrollFx) { window.removeEventListener('scroll', this.onScrollFx); window.removeEventListener('resize', this.onScrollFx); }
-    [this._rvIo, this._wordIo, this._numIo, this._drawIo].forEach((o) => o && o.disconnect());
+    if (this._poll) clearInterval(this._poll);
   }
 
   renderVals() {
